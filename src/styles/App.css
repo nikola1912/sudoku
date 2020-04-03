@@ -1,0 +1,20 @@
+.board {
+    width: 400px;
+    height: 400px;
+    display: grid;
+    border: 1px solid black;
+}
+
+.board-square {
+    display: grid;
+    border: 0.5px solid black;
+}
+
+.board-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25em;
+    font-weight: 600;
+    border: 0.5px solid rgb(0, 0, 0);
+}
