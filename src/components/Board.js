@@ -3,6 +3,7 @@ import React from 'react';
 const Board = (props) => {
     let newBoard = [];
     let startIndex = 0;
+    let squareCount = 1;
     const boardSize = props.boardSize;
     const squareSize = boardSize**(1/2);
 
@@ -14,7 +15,12 @@ const Board = (props) => {
             squareSize={squareSize}
             startIndex={startIndex} 
         />);
-        startIndex += squareSize;
+        if (squareCount === 1 ? false : squareCount % squareSize === 0) 
+            startIndex = (boardSize**2 / squareSize) * (squareCount / squareSize);
+        else 
+            startIndex += squareSize;
+
+        squareCount++;
     }
     
     return (
