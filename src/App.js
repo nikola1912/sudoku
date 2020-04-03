@@ -4,15 +4,14 @@ import './styles/App.css';
 import Board from './components/Board.js';
 import Buttons from './components/Buttons.js';
 
-function range(start, end) {
+function arrayInRange(start, end) {
     return Array(end - start + 1).fill().map((_, idx) => start + idx)
-  }
-var result = range(9, 18);
+}
 
 class App extends React.Component {
     state = {
         boardSize: 9,
-        board: range(0, 80),
+        board: arrayInRange(0, 80),
         /* board: [
             null, 3, null, null, null, null, null, 5, null,
             null, null, 8, null, 9, 1, 3, null, null,
