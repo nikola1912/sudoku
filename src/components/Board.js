@@ -34,7 +34,7 @@ const Square = (props) => {
 
     for (let row = startIndex; row < lastRow; row += boardSize) 
         for (let index = row; index < row + squareSize; index++) 
-            squareCells.push(<Cell key={index} value={board[index]} />);
+            squareCells.push(<Cell key={index} value={board[index]} boardSize={boardSize} />);
 
     return (
         <div
@@ -47,9 +47,20 @@ const Square = (props) => {
 
 
 const Cell = (props) => {
+    let allowedValues;
+    switch (props.boardSize) {
+        case 9: 
+            allowedValues = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+            break;
+        case 16:
+            allowedValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+            break;
+        default:
+            allowedValues = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    }
     return (
         <div className="board-cell">
-            {props.value}
+            {allowedValues.includes(props.value) ? props.value : null}
         </div>
     );
 }
