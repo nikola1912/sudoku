@@ -8,6 +8,7 @@ const Board = (props) => {
 
     for (let i = 0; i < boardSize; i++) {
         newBoard.push(<Square
+            key={i}
             board={props.board}
             boardSize={boardSize}
             squareSize={squareSize}
@@ -29,16 +30,14 @@ const Board = (props) => {
 const Square = (props) => {
     let squareCells = [];
     const { board, boardSize, squareSize, startIndex } = props;
-    const squareIndex = startIndex / squareSize;
     const lastRow = startIndex + squareSize * boardSize;
 
     for (let row = startIndex; row < lastRow; row += boardSize) 
         for (let index = row; index < row + squareSize; index++) 
-            squareCells.push(<Cell value={board[index]} cellIndex={index}/>);
+            squareCells.push(<Cell key={index} value={board[index]} />);
 
     return (
-        <div 
-            key={squareIndex}
+        <div
             className="board-square"
             style={{gridTemplate: `repeat(${squareSize}, 1fr) / repeat(${squareSize}, 1fr)`}}>
                 {[...squareCells]}
@@ -46,12 +45,11 @@ const Square = (props) => {
     );
 }
 
+
 const Cell = (props) => {
     return (
-        <div
-            key={props.cellIndex}
-            className="board-cell">
-                {props.value}
+        <div className="board-cell">
+            {props.value}
         </div>
     );
 }
