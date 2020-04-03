@@ -13,7 +13,8 @@ const Board = (props) => {
             board={props.board}
             boardSize={boardSize}
             squareSize={squareSize}
-            startIndex={startIndex} 
+            startIndex={startIndex}
+            testMode={props.testMode}
         />);
         if (squareCount === 1 ? false : squareCount % squareSize === 0) 
             startIndex = (boardSize**2 / squareSize) * (squareCount / squareSize);
@@ -40,7 +41,12 @@ const Square = (props) => {
 
     for (let row = startIndex; row < lastRow; row += boardSize) 
         for (let index = row; index < row + squareSize; index++) 
-            squareCells.push(<Cell key={index} value={board[index]} boardSize={boardSize} />);
+            squareCells.push(<Cell 
+                key={index}
+                value={board[index]}
+                boardSize={boardSize}
+                testMode={props.testMode}
+            />);
 
     return (
         <div
@@ -66,7 +72,9 @@ const Cell = (props) => {
     }
     return (
         <div className="board-cell">
-            {allowedValues.includes(props.value) ? props.value : null}
+            {props.testMode ? 
+                props.value :
+                allowedValues.includes(props.value) ? props.value : null}
         </div>
     );
 }
