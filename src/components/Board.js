@@ -1,86 +1,91 @@
 import React from 'react';
 
-const Board = (props) => {
-    let newBoard = [];
-    let startIndex = 0;
-    let squareCount = 1;
-    const boardSize = props.boardSize;
-    const squareSize = boardSize**(1/2);
+class BoardTEST extends React.Component {
 
-    for (let i = 0; i < boardSize; i++) {
-        newBoard.push(<Square
-            key={i}
-            board={props.board}
-            boardSize={boardSize}
-            squareSize={squareSize}
-            startIndex={startIndex}
-            testMode={props.testMode}
-        />);
-        if (squareCount === 1 ? false : squareCount % squareSize === 0) 
-            startIndex = (boardSize**2 / squareSize) * (squareCount / squareSize);
-        else 
-            startIndex += squareSize;
+    getVerticalBorderIndexes(boardSize) {
+        let verticalBorderIndexes = [];
+        const squareSize = boardSize**(1/2);
+        for (let column = squareSize; column < boardSize; column += squareSize)
+            for (let index = column; index <= boardSize**2 - (boardSize - column); index += boardSize)
+                verticalBorderIndexes.push(index);
 
-        squareCount++;
+        return verticalBorderIndexes;
     }
-    
-    return (
-        <div 
-            className={"board"}
-            style={{gridTemplate: `repeat(${squareSize}, 1fr) / repeat(${squareSize}, 1fr)`}}>
-                {[...newBoard]}
-        </div>
-    )
+
+    getHorizontalBorderIndexes(boardSize) {
+        let horizontalBorderIndexes = [];
+        const squareSize = boardSize**(1/2);
+        const nextRowStep = boardSize * squareSize
+        const firstRowIndex = boardSize * (squareSize - 1);
+        const lastRowIndex = firstRowIndex + nextRowStep * (squareSize - 1); 
+        for (let row = firstRowIndex; row < lastRowIndex; row += nextRowStep)
+            for (let index = row; index < row + boardSize; index++)
+                horizontalBorderIndexes.push(index);
+
+        return horizontalBorderIndexes;
+    }
+
+    getValidValue(value, allowedValues, testMode) {
+        return testMode ? 
+            value :
+            allowedValues.includes(value) ? value : null
+    }
+
+    getAllowedValues(boardSize) {
+        let allowedValues, fontSize;
+        switch (boardSize) {
+            case 9:
+                fontSize = "1em";
+                allowedValues = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                break;
+            case 16:
+                fontSize = "0.7em";
+                allowedValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+                break;
+            default:
+                fontSize = "1em";
+                allowedValues = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        }
+        return { allowedValues, fontSize };
+    }
+
+    render() {
+        let validCellValue, borderClasses;
+        const { board, boardSize, testMode } = this.props;
+        const { allowedValues, fontSize } = this.getAllowedValues(boardSize);
+        const horizontalBorderIndexes = this.getHorizontalBorderIndexes(boardSize);
+        const verticalBorderIndexes = this.getVerticalBorderIndexes(boardSize);
+
+        return (
+            <div 
+                className={"board"}
+                style={{gridTemplate: `repeat(${boardSize}, 1fr) / repeat(${boardSize}, 1fr)`}}>
+                    {board.map((cellValue, cellIndex) => {
+                        validCellValue = this.getValidValue(cellValue, allowedValues, testMode);
+                        borderClasses = "";
+                        if (horizontalBorderIndexes.includes(cellIndex)) borderClasses += "border-bottom ";
+                        if (verticalBorderIndexes.includes(cellIndex)) borderClasses += "border-left ";
+                        return (
+                            <Cell
+                                key={cellIndex}
+                                fontSize={fontSize}
+                                borderClasses={borderClasses}
+                                value={validCellValue} />
+                        )
+                    })}
+            </div>
+        )
+    }
 }
-
-
-const Square = (props) => {
-    let squareCells = [];
-    const { board, boardSize, squareSize, startIndex } = props;
-    const lastRow = startIndex + squareSize * boardSize;
-
-    for (let row = startIndex; row < lastRow; row += boardSize) 
-        for (let index = row; index < row + squareSize; index++) 
-            squareCells.push(<Cell 
-                key={index}
-                value={board[index]}
-                boardSize={boardSize}
-                testMode={props.testMode}
-            />);
-
-    return (
-        <div
-            className="board-square"
-            style={{gridTemplate: `repeat(${squareSize}, 1fr) / repeat(${squareSize}, 1fr)`}}>
-                {[...squareCells]}
-        </div>
-    );
-}
-
 
 const Cell = (props) => {
-    let allowedValues, fontSize;
-    switch (props.boardSize) {
-        case 9:
-            fontSize = "1em";
-            allowedValues = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-            break;
-        case 16:
-            fontSize = "0.7em";
-            allowedValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
-            break;
-        default:
-            allowedValues = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    }
     return (
-        <div
-            className="board-cell"
-            style={{fontSize: `${fontSize}`}}>
-            {props.testMode ? 
-                props.value :
-                allowedValues.includes(props.value) ? props.value : null}
+        <div 
+            className={`board-cell ${props.borderClasses}`}
+            style={{fontSize: `${props.fontSize}`}}>
+                {props.value}
         </div>
     );
 }
 
-export default Board;
+export default BoardTEST;
