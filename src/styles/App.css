@@ -1,13 +1,13 @@
 .board {
+    display: grid;
     width: 400px;
     height: 400px;
-    display: grid;
-    border: 1px solid black;
+    border: 0.5px solid rgb(44, 44, 44);
 }
 
 .board-square {
     display: grid;
-    border: 0.5px solid black;
+    border: 0.5px solid rgb(44, 44, 44);
 }
 
 .board-cell {
@@ -16,5 +16,34 @@
     align-items: center;
     font-size: 1.25em;
     font-weight: 600;
-    border: 0.5px solid rgb(0, 0, 0);
+    border: 0.5px solid rgb(44, 44, 44);
+    color: rgb(44, 44, 44);
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    width: 401px;
+    margin-bottom: 5px;
+}
+
+.buttons-container .button {
+    font-family: inherit;
+    width: 72px;
+    height: 30px;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid rgb(221, 221, 221);
+    background-color: rgb(241, 241, 241);
+    color: rgb(42, 42, 42);
+}
+
+.buttons-container .button:hover {
+    background-color: rgb(245, 245, 245);
+}
+
+.button:active {
+    position: relative;
+    top: 0.5px;
 }

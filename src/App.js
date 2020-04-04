@@ -29,15 +29,15 @@ class App extends React.Component {
     render() {
         return (
             <div className="game">
+                <div className="game-buttons">
+                    <Buttons />
+                </div>
                 <div className="game-board">
                     <Board 
                         board={this.state.board}
                         boardSize={this.state.boardSize}
                         testMode={this.state.testMode}
                     />
-                </div>
-                <div className="game-buttons">
-                    <Buttons />
                 </div>
             </div>
         );
