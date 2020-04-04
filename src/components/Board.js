@@ -59,19 +59,23 @@ const Square = (props) => {
 
 
 const Cell = (props) => {
-    let allowedValues;
+    let allowedValues, fontSize;
     switch (props.boardSize) {
-        case 9: 
+        case 9:
+            fontSize = "1em";
             allowedValues = [1, 2, 3, 4, 5, 6, 7, 8, 9];
             break;
         case 16:
+            fontSize = "0.7em";
             allowedValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
             break;
         default:
             allowedValues = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     }
     return (
-        <div className="board-cell">
+        <div
+            className="board-cell"
+            style={{fontSize: `${fontSize}`}}>
             {props.testMode ? 
                 props.value :
                 allowedValues.includes(props.value) ? props.value : null}
