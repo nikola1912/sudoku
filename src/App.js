@@ -2,7 +2,7 @@ import React from 'react';
 import './styles/App.css';
 
 import Board from './components/Board.js';
-import Buttons from './components/Buttons.js';
+import { HeaderButtons, FooterButtons } from './components/Buttons.js';
 
 function arrayInRange(start, end) {
     return Array(end - start + 1).fill().map((_, idx) => start + idx)
@@ -34,8 +34,7 @@ class App extends React.Component {
         return (
             <div className="game">
                 <div className="game-buttons">
-                    <Buttons
-                        onImport={() => this.handleImport()}
+                    <HeaderButtons
                         onSolve={() => this.handleSolve()}
                         onGenerate={() => this.handleGenerate()}
                         onReset={() => this.handleReset()}
@@ -46,6 +45,12 @@ class App extends React.Component {
                         board={this.state.board}
                         boardSize={this.state.boardSize}
                         testMode={this.state.testMode}
+                    />
+                </div>
+                <div className="game-buttons">
+                    <FooterButtons
+                        onImport={() => this.handleImport()}
+                        onExport={() => this.handleExport()}
                     />
                 </div>
             </div>

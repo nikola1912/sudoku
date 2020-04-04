@@ -29,9 +29,9 @@
 
 .buttons-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 401px;
-    margin-bottom: 5px;
+    margin: 5px 0;
 }
 
 .buttons-container .button {

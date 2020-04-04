@@ -1,32 +1,38 @@
 import React from 'react';
 
-class Buttons extends React.Component {
-    render() {
-        return (
-            <div className="buttons-container">
-                <button
-                    className="button"
-                    onClick={this.props.onImport}>
-                    Import
-                </button>
-                <button
-                    className="button"
-                    onClick={this.props.onSolve}>
-                    Solve
-                </button>
-                <button
-                    className="button"
-                    onClick={this.props.onGenerate}>
-                    Generate
-                </button>
-                <button
-                    className="button"
-                    onClick={this.props.onRestart}>
-                    Restart
-                </button>
-            </div>
-        )
-    }
-}
+const HeaderButtons = (props) => (
+    <div className="buttons-container">
+        <button
+            className="button"
+            onClick={props.onSolve}>
+            Solve
+        </button>
+        <button
+            className="button"
+            onClick={props.onGenerate}>
+            Generate
+        </button>
+        <button
+            className="button"
+            onClick={props.onRestart}>
+            Restart
+        </button>
+    </div>
+)
 
-export default Buttons;
+const FooterButtons = (props) => (
+    <div className="buttons-container">
+         <button
+            className="button"
+            onClick={props.onImport}>
+            Import
+        </button>
+        <button
+            className="button"
+            onClick={props.onExport}>
+            Export
+        </button>
+    </div>
+)
+
+export { HeaderButtons, FooterButtons };
