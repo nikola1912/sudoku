@@ -26,11 +26,20 @@ class App extends React.Component {
           testMode: true
     };
 
+    handleImport() {
+        console.log("CLICKED");
+    }
+
     render() {
         return (
             <div className="game">
                 <div className="game-buttons">
-                    <Buttons />
+                    <Buttons
+                        onImport={() => this.handleImport()}
+                        onSolve={() => this.handleSolve()}
+                        onGenerate={() => this.handleGenerate()}
+                        onReset={() => this.handleReset()}
+                    />
                 </div>
                 <div className="game-board">
                     <Board 

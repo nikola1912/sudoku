@@ -4,10 +4,26 @@ class Buttons extends React.Component {
     render() {
         return (
             <div className="buttons-container">
-                <button className="button">Import</button>
-                <button className="button">Solve</button>
-                <button className="button">Generate</button>
-                <button className="button">Reset</button>
+                <button
+                    className="button"
+                    onClick={this.props.onImport}>
+                    Import
+                </button>
+                <button
+                    className="button"
+                    onClick={this.props.onSolve}>
+                    Solve
+                </button>
+                <button
+                    className="button"
+                    onClick={this.props.onGenerate}>
+                    Generate
+                </button>
+                <button
+                    className="button"
+                    onClick={this.props.onRestart}>
+                    Restart
+                </button>
             </div>
         )
     }
