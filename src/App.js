@@ -3,6 +3,7 @@ import './styles/App.css';
 
 import Board from './components/Board.js';
 import { HeaderButtons, FooterButtons } from './components/Buttons.js';
+import { ImportForm, ExportForm } from './components/Forms.js';
 
 function arrayInRange(start, end) {
     return Array(end - start + 1).fill().map((_, idx) => start + idx)
@@ -23,11 +24,32 @@ class App extends React.Component {
             null, null, 4, 1, 2, null, 6, null, null,
             null, 6, null, null, null, null, null, 4, null
           ], */
+          buttonsVisability: true,
+          importVisability: false,
+          exportVisability: false,
           testMode: true
     };
 
+    handleCancel() {
+        this.setState({
+            importVisability: false,
+            exportVisability: false,
+            buttonsVisability: true
+        })
+    }
+
     handleImport() {
-        console.log("CLICKED");
+        this.setState({
+            buttonsVisability: false,
+            importVisability: true
+        })
+    }
+
+    handleExport() {
+        this.setState({
+            buttonsVisability: false,
+            exportVisability: true
+        })
     }
 
     render() {
@@ -47,11 +69,18 @@ class App extends React.Component {
                         testMode={this.state.testMode}
                     />
                 </div>
-                <div className="game-buttons">
+                <div className="import-export-container">
                     <FooterButtons
                         onImport={() => this.handleImport()}
                         onExport={() => this.handleExport()}
+                        visability={this.state.buttonsVisability}
                     />
+                    <ImportForm
+                        onCancel={() => this.handleCancel()}
+                        visability={this.state.importVisability} />
+                    <ExportForm
+                        onCancel={() => this.handleCancel()}
+                        visability={this.state.exportVisability} />
                 </div>
             </div>
         );

@@ -21,7 +21,7 @@ const HeaderButtons = (props) => (
 )
 
 const FooterButtons = (props) => (
-    <div className="buttons-container">
+    <div className={`${props.visability ? "buttons-container" : "hidden"}`}>
          <button
             className="button"
             onClick={props.onImport}>
