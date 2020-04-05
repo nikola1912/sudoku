@@ -1,6 +1,6 @@
 import React from 'react';
 
-class BoardTEST extends React.Component {
+class Board extends React.Component {
 
     getVerticalBorderIndexes(boardSize) {
         let verticalBorderIndexes = [];
@@ -28,7 +28,7 @@ class BoardTEST extends React.Component {
     getValidValue(value, allowedValues, testMode) {
         return testMode ? 
             value :
-            allowedValues.includes(value) ? value : null
+            allowedValues.includes(value) ? value : null;
     }
 
     getAllowedValues(boardSize) {
@@ -78,14 +78,12 @@ class BoardTEST extends React.Component {
     }
 }
 
-const Cell = (props) => {
-    return (
-        <div 
-            className={`board-cell ${props.borderClasses}`}
-            style={{fontSize: `${props.fontSize}`}}>
-                {props.value}
-        </div>
-    );
-}
+const Cell = (props) => (
+    <div 
+        className={`board-cell ${props.borderClasses}`}
+        style={{fontSize: `${props.fontSize}`}}>
+            {props.value}
+    </div>
+);
 
-export default BoardTEST;
+export default Board;
