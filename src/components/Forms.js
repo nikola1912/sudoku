@@ -55,11 +55,20 @@ class ImportForm extends React.Component {
         this.props.onSubmit({...this.state});
     }
 
+    handleFormClear() {
+        this.setState({
+            boardSize: "9",
+            inputMode: "",
+            inputCode: "",
+            showErrorMessage: false
+        }, () => this.props.onCancel())
+    }
+
     render() {
         return (
             <form noValidate
                 onSubmit={event => this.handleFormSubmit(event)}
-                className={`${this.props.visability ? "form form-import" : "hidden"}`}>
+                className={this.props.visability ? "form form-import" : "hidden"}>
                 <div className="radio-container">
                     <fieldset className="radio-size">
                             <legend>Board Size:</legend>
@@ -127,7 +136,7 @@ class ImportForm extends React.Component {
                     type="button"
                     value="Cancel"
                     className="button"
-                    onClick={this.props.onCancel} />
+                    onClick={() => this.handleFormClear()} />
             </form>
         )
     }
