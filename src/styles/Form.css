@@ -73,6 +73,10 @@
     background-color: var(--button-color);
 }
 
+.input-code-container {
+    margin-bottom: 7px;
+}
+
 .input-code-container label {
     display: flex;
     justify-content: center;
