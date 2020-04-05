@@ -24,11 +24,15 @@ class App extends React.Component {
             null, null, 4, 1, 2, null, 6, null, null,
             null, 6, null, null, null, null, null, 4, null
           ], */
-          buttonsVisability: true,
-          importVisability: false,
+          buttonsVisability: false,
+          importVisability: true,
           exportVisability: false,
           testMode: true
     };
+
+    handleSubmit(importData) {
+        console.log(importData);
+    }
 
     handleCancel() {
         this.setState({
@@ -76,6 +80,7 @@ class App extends React.Component {
                         visability={this.state.buttonsVisability}
                     />
                     <ImportForm
+                        onSubmit={this.handleSubmit}
                         onCancel={() => this.handleCancel()}
                         visability={this.state.importVisability} />
                     <ExportForm
