@@ -112,14 +112,13 @@ class ImportForm extends React.Component {
                 </div>
 
                 <div className="input-code-container">
-                    <label htmlFor="input-code">
+                    <label>
                         <span className="questionMark">?</span>
                         Sudoku Code:
                     </label>
                     <input required
                         type="text"
                         name="inputCode"
-                        id="input-code"
                         value={this.state.inputCode}
                         onChange={event => this.handleFormChange(event)} />
                     <ErrorMessage 
