@@ -3,7 +3,8 @@ import './styles/App.css';
 
 import Board from './components/Board.js';
 import { HeaderButtons, FooterButtons } from './components/Buttons.js';
-import { ImportForm, ExportForm } from './components/Forms.js';
+import ImportForm from './components/ImportForm.js';
+import ExportForm from './components/ExportForm.js';
 
 function arrayInRange(start, end) {
     return Array(end - start + 1).fill().map((_, idx) => start + idx)
