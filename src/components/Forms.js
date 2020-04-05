@@ -1,10 +1,13 @@
 import React from 'react';
+import '../styles/Form.css';
 
 class ImportForm extends React.Component {
     state = {
         boardSize: "9",
         inputMode: "",
-        inputCode: ""
+        inputCode: "",
+        inputCodeError: "",
+        showErrorMessage: false
     }
 
     handleBoardSizeChange(event) {
@@ -16,17 +19,42 @@ class ImportForm extends React.Component {
     }
 
     handleInputCodeChange(event) {
-        this.setState({inputCode: event.target.value});
+        let inputCodeError;
+        const { value } = event.target;
+        if (this.state.boardSize === "9")
+            inputCodeError = value.length !== 81 ? 
+                "Input code doesn't contain 81 values" : ""
+        else if (this.state.boardSize === "16") 
+            inputCodeError = value.length !== 256 ? 
+                "Input code doesn't contain 256 values" : "";
+        this.setState({
+            inputCode: value, 
+            showErrorMessage: false,
+            inputCodeError
+        });
+    }
+
+    handleFormChange(event) {
+        //console.log(event.target.value);
+        // MOVE ALL CHANGING STATES INTO FORM CHANGE EVENT
     }
 
     handleFormSubmit(event) {
         event.preventDefault();
+        if (this.state.inputCodeError.length === 0) {
+            this.setState({showErrorMessage: false});
+        } else {
+            this.setState({showErrorMessage: true});
+            console.error('Invalid Form');
+        }
+        console.log(this.state.inputCode.length);
         this.props.onSubmit({...this.state});
     }
 
     render() {
         return (
             <form 
+                onChange={event => this.handleFormChange(event)}
                 onSubmit={event => this.handleFormSubmit(event)}
                 className={`${this.props.visability ? "form form-import" : "hidden"}`}>
                 <div className="radio-container">
@@ -77,6 +105,11 @@ class ImportForm extends React.Component {
                         id="input-code"
                         value={this.state.inputCode}
                         onChange={event => this.handleInputCodeChange(event)} />
+                    <span 
+                        className={`error-message ${this.state.showErrorMessage ?
+                            "show-error-message" : ""}`}>
+                        {this.state.inputCodeError}
+                    </span>
                 </div>
 
                 <input
