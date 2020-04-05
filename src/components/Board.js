@@ -36,15 +36,15 @@ class Board extends React.Component {
         switch (boardSize) {
             case 9:
                 fontSize = "1em";
-                allowedValues = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                allowedValues = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
                 break;
             case 16:
                 fontSize = "0.7em";
-                allowedValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+                allowedValues = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
                 break;
             default:
                 fontSize = "1em";
-                allowedValues = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                allowedValues = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
         }
         return { allowedValues, fontSize };
     }
@@ -61,7 +61,7 @@ class Board extends React.Component {
                 className={"board"}
                 style={{gridTemplate: `repeat(${boardSize}, 1fr) / repeat(${boardSize}, 1fr)`}}>
                     {board.map((cellValue, cellIndex) => {
-                        validCellValue = this.getValidValue(cellValue, allowedValues, testMode);
+                        validCellValue = this.getValidValue(String(cellValue), allowedValues, testMode);
                         borderClasses = "";
                         if (horizontalBorderIndexes.includes(cellIndex)) borderClasses += "border-bottom ";
                         if (verticalBorderIndexes.includes(cellIndex)) borderClasses += "border-left ";
