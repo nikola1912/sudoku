@@ -32,7 +32,7 @@ class App extends React.Component {
     };
 
     handleSubmit(importData) {
-        console.log(importData);
+        this.setState(importData);
     }
 
     handleCancel() {
@@ -81,7 +81,7 @@ class App extends React.Component {
                         visability={this.state.buttonsVisability}
                     />
                     <ImportForm
-                        onSubmit={this.handleSubmit}
+                        onSubmit={(importData) => this.handleSubmit(importData)}
                         onCancel={() => this.handleCancel()}
                         visability={this.state.importVisability} />
                     <ExportForm

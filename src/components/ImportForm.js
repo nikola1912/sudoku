@@ -46,15 +46,15 @@ class ImportForm extends React.Component {
     handleFormSubmit(event) {
         event.preventDefault();
         if (this.validateForm()) {
-            console.log("VALID");
             this.setState({showErrorMessage: false});
-        } else {
-            console.log("INVALID");
-            this.setState({showErrorMessage: true});
-        }
-        this.props.onSubmit({...this.state});
+            this.props.onSubmit({
+                board: Array.from(this.state.inputCode),
+                boardSize: Number(this.state.boardSize),
+                inputMode: this.state.inputMode
+            });
+        } else this.setState({showErrorMessage: true});
     }
-
+    
     handleFormClear() {
         this.setState({
             boardSize: "9",
