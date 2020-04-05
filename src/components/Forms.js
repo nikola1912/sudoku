@@ -6,55 +6,58 @@ class ImportForm extends React.Component {
         boardSize: "9",
         inputMode: "",
         inputCode: "",
-        inputCodeError: "",
         showErrorMessage: false
     }
 
-    handleBoardSizeChange(event) {
-        this.setState({boardSize: event.target.value});
+    handleBoardSizeChange(boardSize) {
+        this.setState({boardSize});
     }
 
-    handleInputModeChange(event) {
-        this.setState({inputMode: event.target.value});
+    handleInputModeChange(inputMode) {
+        this.setState({inputMode});
     }
 
-    handleInputCodeChange(event) {
-        let inputCodeError;
-        const { value } = event.target;
-        if (this.state.boardSize === "9")
-            inputCodeError = value.length !== 81 ? 
-                "Input code doesn't contain 81 values" : ""
-        else if (this.state.boardSize === "16") 
-            inputCodeError = value.length !== 256 ? 
-                "Input code doesn't contain 256 values" : "";
-        this.setState({
-            inputCode: value, 
-            showErrorMessage: false,
-            inputCodeError
-        });
+    handleInputCodeChange(inputCode) {
+        this.setState({inputCode});
     }
 
     handleFormChange(event) {
-        //console.log(event.target.value);
-        // MOVE ALL CHANGING STATES INTO FORM CHANGE EVENT
+        switch (event.target.name) {
+            case "boardSize":
+                this.handleBoardSizeChange(event.target.value);
+                break;
+            case "inputMode":
+                this.handleInputModeChange(event.target.value);
+                break;
+            case "inputCode":
+                this.handleInputCodeChange(event.target.value);
+                break;
+            default:
+                break;
+        }
+        this.setState({showErrorMessage: false});
+    }
+
+    validateForm() {
+        const requiredCodeLength = parseInt(this.state.boardSize)**2;
+        return this.state.inputCode.length === requiredCodeLength;
     }
 
     handleFormSubmit(event) {
         event.preventDefault();
-        if (this.state.inputCodeError.length === 0) {
+        if (this.validateForm()) {
+            console.log("VALID");
             this.setState({showErrorMessage: false});
         } else {
+            console.log("INVALID");
             this.setState({showErrorMessage: true});
-            console.error('Invalid Form');
         }
-        console.log(this.state.inputCode.length);
         this.props.onSubmit({...this.state});
     }
 
     render() {
         return (
-            <form 
-                onChange={event => this.handleFormChange(event)}
+            <form noValidate
                 onSubmit={event => this.handleFormSubmit(event)}
                 className={`${this.props.visability ? "form form-import" : "hidden"}`}>
                 <div className="radio-container">
@@ -62,17 +65,19 @@ class ImportForm extends React.Component {
                             <legend>Board Size:</legend>
                             <input 
                                 type="radio"
+                                name="boardSize"
                                 id="9x9"
                                 value="9"
                                 checked={this.state.boardSize === "9"}
-                                onChange={event => this.handleBoardSizeChange(event)} />
+                                onChange={event => this.handleFormChange(event)} />
                             <label htmlFor="9x9">9x9</label>
                             <input 
                                 type="radio"
+                                name="boardSize"
                                 id="16x16"
                                 value="16"
                                 checked={this.state.boardSize === "16"}
-                                onChange={event => this.handleBoardSizeChange(event)} />
+                                onChange={event => this.handleFormChange(event)} />
                             <label htmlFor="16x16">16x16</label>
                     </fieldset>
 
@@ -80,17 +85,19 @@ class ImportForm extends React.Component {
                         <legend><span className="questionMark">?</span>Input Mode:</legend>
                         <input disabled
                             type="radio"
+                            name="inputMode"
                             id="row"
                             value="row"
                             checked={this.state.inputMode === "row"}
-                            onChange={event => this.handleInputModeChange(event)} />
+                            onChange={event => this.handleFormChange(event)} />
                         <label htmlFor="row">Row</label>
                         <input disabled
                             type="radio"
+                            name="inputMode"
                             id="square"
                             value="square"
                             checked={this.state.inputMode === "square"}
-                            onChange={event => this.handleInputModeChange(event)} />
+                            onChange={event => this.handleFormChange(event)} />
                         <label htmlFor="square">Square</label>
                     </fieldset>
                 </div>
@@ -102,14 +109,14 @@ class ImportForm extends React.Component {
                     </label>
                     <input required
                         type="text"
+                        name="inputCode"
                         id="input-code"
                         value={this.state.inputCode}
-                        onChange={event => this.handleInputCodeChange(event)} />
-                    <span 
-                        className={`error-message ${this.state.showErrorMessage ?
-                            "show-error-message" : ""}`}>
-                        {this.state.inputCodeError}
-                    </span>
+                        onChange={event => this.handleFormChange(event)} />
+                    <ErrorMessage 
+                        className={`error-message ${this.state.showErrorMessage ? "show-error-message" : ""}`}
+                        inputValid={() => this.validateForm()}
+                        requiredCodeLength={this.state.boardSize**2} />
                 </div>
 
                 <input
@@ -125,6 +132,14 @@ class ImportForm extends React.Component {
         )
     }
 }
+
+const ErrorMessage = (props) => (
+    <span className={props.className}>
+        {props.inputValid ?
+        `Input code doesn't contain ${props.requiredCodeLength} values` : ""}
+    </span>
+)
+
 
 class ExportForm extends React.Component {
 
