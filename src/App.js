@@ -11,9 +11,24 @@ function arrayInRange(start, end) {
     return Array(end - start + 1).fill().map((_, idx) => start + idx)
 }
 
+function generateGrid(size) {
+    let grid = []; 
+    let index = 0;
+    for (let i = 0; i < size; i++) {
+        let row = [];
+        for (let j = 0; j < size; j++) {
+            row.push(index);
+            index++;
+        }
+        grid.push(row);
+    }
+    return grid;
+}
+
 class App extends React.Component {
     state = {
         boardSize: 9,
+        /* board: generateGrid(9), */
         board: arrayInRange(0, 80),
         /* board: [
             null, 3, null, null, null, null, null, 5, null,
@@ -26,19 +41,19 @@ class App extends React.Component {
             null, null, 4, 1, 2, null, 6, null, null,
             null, 6, null, null, null, null, null, 4, null
           ], */
-          buttonsVisability: false,
+          buttonsVisability: true,
           importVisability: false,
-          generateVisability: true,
+          generateVisability: false,
           exportVisability: false,
           testMode: true
     };
+    
+    handleImportSubmit(importData) {
+        this.setState(importData);
+    }
 
     handleGenerateSubmit(generateData) {
         console.log(generateData);
-    }
-
-    handleImportSubmit(importData) {
-        this.setState(importData);
     }
 
     handleCancel() {
