@@ -43,12 +43,18 @@ class ImportForm extends React.Component {
         return this.state.inputCode.length === requiredCodeLength;
     }
 
+    convertToMatrix(array, rowSize) {
+        return array.reduce((rows, key, index) => (index % rowSize === 0 ? 
+            rows.push([key]) :
+            rows[rows.length-1].push(key)) && rows, []);
+    }
+
     handleFormSubmit(event) {
         event.preventDefault();
         if (this.validateForm()) {
             this.handleFormCancel();
             this.props.onSubmit({
-                board: Array.from(this.state.inputCode),
+                board: this.convertToMatrix(Array.from(this.state.inputCode), this.state.boardSize),
                 boardSize: Number(this.state.boardSize),
                 inputMode: this.state.inputMode
             });

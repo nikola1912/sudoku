@@ -28,8 +28,8 @@ function generateGrid(size) {
 class App extends React.Component {
     state = {
         boardSize: 9,
-        /* board: generateGrid(9), */
-        board: arrayInRange(0, 80),
+        board: generateGrid(9),
+        /* board: arrayInRange(0, 80), */
         /* board: [
             null, 3, null, null, null, null, null, 5, null,
             null, null, 8, null, 9, 1, 3, null, null,

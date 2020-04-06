@@ -2,29 +2,6 @@ import React from 'react';
 
 class Board extends React.Component {
 
-    getVerticalBorderIndexes(boardSize) {
-        let verticalBorderIndexes = [];
-        const squareSize = boardSize**(1/2);
-        for (let column = squareSize; column < boardSize; column += squareSize)
-            for (let index = column; index <= boardSize**2 - (boardSize - column); index += boardSize)
-                verticalBorderIndexes.push(index);
-
-        return verticalBorderIndexes;
-    }
-
-    getHorizontalBorderIndexes(boardSize) {
-        let horizontalBorderIndexes = [];
-        const squareSize = boardSize**(1/2);
-        const nextRowStep = boardSize * squareSize
-        const firstRowIndex = boardSize * (squareSize - 1);
-        const lastRowIndex = firstRowIndex + nextRowStep * (squareSize - 1); 
-        for (let row = firstRowIndex; row < lastRowIndex; row += nextRowStep)
-            for (let index = row; index < row + boardSize; index++)
-                horizontalBorderIndexes.push(index);
-
-        return horizontalBorderIndexes;
-    }
-
     getValidValue(value, allowedValues, testMode) {
         return testMode ? 
             value :
@@ -50,31 +27,29 @@ class Board extends React.Component {
     }
 
     render() {
-        let validCellValue, borderClasses;
+        let validCellValue;
         const { board, boardSize, testMode } = this.props;
         const { allowedValues, fontSize } = this.getAllowedValues(boardSize);
-        const horizontalBorderIndexes = this.getHorizontalBorderIndexes(boardSize);
-        const verticalBorderIndexes = this.getVerticalBorderIndexes(boardSize);
+        const squareSize = boardSize**(1/2);
 
         return (
             <div 
                 className={"board"}
                 style={{gridTemplate: `repeat(${boardSize}, 1fr) / repeat(${boardSize}, 1fr)`}}>
-                    {board.map((cellValue, cellIndex) => {
+                    {board.map((row, rowIndex) => row.map((cellValue, columnIndex) => {
                         validCellValue = this.getValidValue(String(cellValue), allowedValues, testMode);
-                        borderClasses = "";
-                        if (horizontalBorderIndexes.includes(cellIndex)) borderClasses += "border-bottom ";
-                        if (verticalBorderIndexes.includes(cellIndex)) borderClasses += "border-left ";
                         return (
-                            <Cell
-                                key={cellIndex}
-                                fontSize={fontSize}
-                                borderClasses={borderClasses}
-                                value={validCellValue} />
-                        )
-                    })}
+                            <Cell 
+                                key={rowIndex * boardSize + columnIndex} 
+                                fontSize={fontSize} 
+                                value={validCellValue}
+                                borderClasses={"" +
+                                    (columnIndex % squareSize === 0 ? "border-left " : "") +
+                                    (rowIndex % squareSize === 0 ? "border-top " : "")} />
+                        );
+                    }))}
             </div>
-        )
+        );
     }
 }
 

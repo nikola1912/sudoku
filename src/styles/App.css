@@ -21,7 +21,8 @@
     display: grid;
     width: 400px;
     height: 400px;
-    border: 1.5px solid var(--board-color);
+    border: solid var(--board-color);
+    border-width: 1px 2px 2px 1px;
 }
 
 .board-square {
@@ -37,8 +38,8 @@
     border: 1px solid var(--board-color);
 }
 
-.border-bottom {
-    border-bottom: 2px solid var(--board-color);
+.border-top {
+    border-top: 2px solid var(--board-color);
 }
 
 .border-left {
