@@ -46,7 +46,7 @@ class ImportForm extends React.Component {
     handleFormSubmit(event) {
         event.preventDefault();
         if (this.validateForm()) {
-            this.setState({showErrorMessage: false});
+            this.handleFormCancel();
             this.props.onSubmit({
                 board: Array.from(this.state.inputCode),
                 boardSize: Number(this.state.boardSize),
@@ -55,7 +55,7 @@ class ImportForm extends React.Component {
         } else this.setState({showErrorMessage: true});
     }
     
-    handleFormClear() {
+    handleFormCancel() {
         this.setState({
             boardSize: "9",
             inputMode: "",
@@ -135,7 +135,7 @@ class ImportForm extends React.Component {
                     type="button"
                     value="Cancel"
                     className="button"
-                    onClick={() => this.handleFormClear()} />
+                    onClick={() => this.handleFormCancel()} />
             </form>
         )
     }
