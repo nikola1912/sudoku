@@ -63,7 +63,6 @@ class App extends React.Component {
                 <div className="game-buttons">
                     <HeaderButtons
                         onSolve={() => this.handleSolve()}
-                        onGenerate={() => this.handleGenerate()}
                         onReset={() => this.handleReset()}
                     />
                 </div>
@@ -78,8 +77,8 @@ class App extends React.Component {
                     <FooterButtons
                         onImport={() => this.handleImport()}
                         onExport={() => this.handleExport()}
-                        visability={this.state.buttonsVisability}
-                    />
+                        onGenerate={() => this.handleGenerate()}
+                        visability={this.state.buttonsVisability} />
                     <ImportForm
                         onSubmit={(importData) => this.handleSubmit(importData)}
                         onCancel={() => this.handleCancel()}

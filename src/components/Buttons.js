@@ -9,11 +9,6 @@ const HeaderButtons = (props) => (
         </button>
         <button
             className="button"
-            onClick={props.onGenerate}>
-            Generate
-        </button>
-        <button
-            className="button"
             onClick={props.onRestart}>
             Restart
         </button>
@@ -26,6 +21,11 @@ const FooterButtons = (props) => (
             className="button"
             onClick={props.onImport}>
             Import
+        </button>
+        <button
+            className="button"
+            onClick={props.onGenerate}>
+            Generate
         </button>
         <button
             className="button"
