@@ -4,14 +4,6 @@
     transition: opacity 0.35s ease-out;
 }
 
-.form > * {
-    margin: 15px 0;
-}
-
-.form .button {
-    margin: 0px 7px;
-}
-
 .form .questionMark {
     display: flex;
     justify-content: center;
@@ -29,6 +21,7 @@
 .radio-container {
     display: flex;
     justify-content: center;
+    margin: 15px 0;
 }
 
 .radio-container fieldset {
@@ -73,6 +66,10 @@
     background-color: var(--button-color);
 }
 
+.radio-container + .button {
+    margin: 9px 7px;
+}
+
 .input-code-container {
     margin-bottom: 7px;
 }
@@ -110,4 +107,8 @@
 
 .input-code-container .show-error-message {
     opacity: 1;
+}
+
+.input-code-container + .button {
+    margin: 0px 7px;
 }

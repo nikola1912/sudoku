@@ -5,6 +5,7 @@ import Board from './components/Board.js';
 import { HeaderButtons, FooterButtons } from './components/Buttons.js';
 import ImportForm from './components/ImportForm.js';
 import ExportForm from './components/ExportForm.js';
+import GenerateForm from './components/GenerateForm.js';
 
 function arrayInRange(start, end) {
     return Array(end - start + 1).fill().map((_, idx) => start + idx)
@@ -26,35 +27,48 @@ class App extends React.Component {
             null, 6, null, null, null, null, null, 4, null
           ], */
           buttonsVisability: false,
-          importVisability: true,
+          importVisability: false,
+          generateVisability: true,
           exportVisability: false,
           testMode: true
     };
 
-    handleSubmit(importData) {
+    handleGenerateSubmit(generateData) {
+        console.log(generateData);
+    }
+
+    handleImportSubmit(importData) {
         this.setState(importData);
     }
 
     handleCancel() {
         this.setState({
             importVisability: false,
+            generateVisability: false,
             exportVisability: false,
             buttonsVisability: true
-        })
+        });
     }
-
+    
     handleImport() {
         this.setState({
             buttonsVisability: false,
             importVisability: true
-        })
+        });
+    }
+    
+    handleGenerate() {
+        this.setState({
+            buttonsVisability: false,
+            generateVisability: true
+        });
     }
 
     handleExport() {
         this.setState({
             buttonsVisability: false,
             exportVisability: true
-        })
+        });
     }
 
     render() {
@@ -80,9 +94,13 @@ class App extends React.Component {
                         onGenerate={() => this.handleGenerate()}
                         visability={this.state.buttonsVisability} />
                     <ImportForm
-                        onSubmit={(importData) => this.handleSubmit(importData)}
+                        onSubmit={(importData) => this.handleImportSubmit(importData)}
                         onCancel={() => this.handleCancel()}
                         visability={this.state.importVisability} />
+                    <GenerateForm 
+                        onSubmit={(generateData) => this.handleGenerateSubmit(generateData)}
+                        onCancel={() => this.handleCancel()}
+                        visability={this.state.generateVisability} />
                     <ExportForm
                         onCancel={() => this.handleCancel()}
                         visability={this.state.exportVisability} />
