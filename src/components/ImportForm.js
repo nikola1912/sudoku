@@ -76,7 +76,7 @@ class ImportForm extends React.Component {
                 onSubmit={event => this.handleFormSubmit(event)}
                 className={this.props.visability ? "form form-import" : "hidden"}>
                 <div className="radio-container">
-                    <fieldset className="radio-size">
+                    <fieldset className="radio-boardSize">
                             <legend>Board Size:</legend>
                             <input 
                                 type="radio"
@@ -96,7 +96,7 @@ class ImportForm extends React.Component {
                             <label htmlFor="16x16">16x16</label>
                     </fieldset>
 
-                    <fieldset className="radio-mode">
+                    <fieldset className="radio-inputMode">
                         <legend><span className="questionMark">?</span>Input Mode:</legend>
                         <input disabled
                             type="radio"

@@ -47,7 +47,7 @@ class GenerateForm extends React.Component {
                 onSubmit={event => this.handleFormSubmit(event)}
                 className={this.props.visability ? "form form-generate" : "hidden"}>
                 <div className="radio-container">
-                    <fieldset className="radio-size">
+                    <fieldset className="radio-boardSize">
                         <legend>Board Size:</legend>
                         <input 
                             type="radio"
