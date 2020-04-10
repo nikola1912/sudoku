@@ -65,21 +65,21 @@ class App extends React.Component {
         });
     }
     
-    handleImport() {
+    displayImportForm() {
         this.setState({
             buttonsVisability: false,
             importVisability: true
         });
     }
     
-    handleGenerate() {
+    displayGenerateForm() {
         this.setState({
             buttonsVisability: false,
             generateVisability: true
         });
     }
 
-    handleExport() {
+    displayExportForm() {
         this.setState({
             buttonsVisability: false,
             exportVisability: true
@@ -89,24 +89,24 @@ class App extends React.Component {
     render() {
         return (
             <div className="game">
-                <div className="game-buttons">
+                <div className="header-Container">
                     <HeaderButtons
                         onSolve={() => this.handleSolve()}
-                        onReset={() => this.handleReset()}
-                    />
+                        onReset={() => this.handleReset()} />
                 </div>
-                <div className="game-board">
+
+                <div className="board-container">
                     <Board 
                         board={this.state.board}
                         boardSize={this.state.boardSize}
-                        testMode={this.state.testMode}
-                    />
+                        testMode={this.state.testMode} />
                 </div>
-                <div className="import-export-container">
+
+                <div className="footer-container">
                     <FooterButtons
-                        onImport={() => this.handleImport()}
-                        onExport={() => this.handleExport()}
-                        onGenerate={() => this.handleGenerate()}
+                        onImport={() => this.displayImportForm()}
+                        onExport={() => this.displayExportForm()}
+                        onGenerate={() => this.displayGenerateForm()}
                         visability={this.state.buttonsVisability} />
                     <ImportForm
                         onSubmit={(importData) => this.handleImportSubmit(importData)}
