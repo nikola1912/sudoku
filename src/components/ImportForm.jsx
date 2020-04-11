@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/Form.css';
-import RadioFieldset from './RadioFieldset.js';
+import RadioFieldset from './RadioFieldset.jsx';
 
 class ImportForm extends React.Component {
     state = {

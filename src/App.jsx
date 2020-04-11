@@ -1,11 +1,11 @@
 import React from 'react';
 import './styles/App.css';
 
-import Board from './components/Board.js';
-import { HeaderButtons, FooterButtons } from './components/Buttons.js';
-import ImportForm from './components/ImportForm.js';
-import ExportForm from './components/ExportForm.js';
-import GenerateForm from './components/GenerateForm.js';
+import Board from './components/Board.jsx';
+import { HeaderButtons, FooterButtons } from './components/Buttons.jsx';
+import ImportForm from './components/ImportForm.jsx';
+import ExportForm from './components/ExportForm.jsx';
+import GenerateForm from './components/GenerateForm.jsx';
 
 function arrayInRange(start, end) {
     return Array(end - start + 1).fill().map((_, idx) => start + idx)
