@@ -28,24 +28,24 @@ function generateGrid(size) {
 class App extends React.Component {
     state = {
         boardSize: 9,
-        board: generateGrid(9),
+        /* board: generateGrid(9), */
         /* board: arrayInRange(0, 80), */
-        /* board: [
-            null, 3, null, null, null, null, null, 5, null,
-            null, null, 8, null, 9, 1, 3, null, null,
-            6, null, null, 4, null, null, 7, null, null,
-            null, null, 3, 8, 1, null, null, null, null,
-            null, null, 6, null, null, null, 2, null, null,
-            null, null, null, null, 3, 4, 8, null, null,
-            null, null, 1, null, null, 8, null, null, 9,
-            null, null, 4, 1, 2, null, 6, null, null,
-            null, 6, null, null, null, null, null, 4, null
-          ], */
+        board: [
+            [null, 3, null, null, null, null, null, 5, null],
+            [null, null, 8, null, 9, 1, 3, null, null],
+            [6, null, null, 4, null, null, 7, null, null],
+            [null, null, 3, 8, 1, null, null, null, null],
+            [null, null, 6, null, null, null, 2, null, null],
+            [null, null, null, null, 3, 4, 8, null, null],
+            [null, null, 1, null, null, 8, null, null, 9],
+            [null, null, 4, 1, 2, null, 6, null, null],
+            [null, 6, null, null, null, null, null, 4, null]
+          ],
           buttonsVisability: true,
           importVisability: false,
           generateVisability: false,
           exportVisability: false,
-          testMode: true
+          testMode: false
     };
     
     handleImportSubmit(importData) {
