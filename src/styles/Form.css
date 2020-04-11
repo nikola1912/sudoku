@@ -67,7 +67,7 @@
 }
 
 .radio-container + .button {
-    margin: 9px 7px;
+    margin: 9px;
 }
 
 .input-code-container {
@@ -86,11 +86,11 @@
     display: block;
     margin: 0 auto;
     padding: 3px;
-    width: 90%;
+    width: 390px;
     outline: 0;
     color: var(--code-color);
     background-color: rgb(242, 246, 251);
-    font-size: 0.8em;
+    font-size: 0.7em;
     border-radius: 3px;
     border: 1px solid var(--button-border);
 }
