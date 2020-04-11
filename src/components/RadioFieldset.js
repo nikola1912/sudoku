@@ -2,10 +2,14 @@ import React from 'react';
 
 const RadioFieldset = (props) => (
     <fieldset className={`radio-${props.name}`}>
-        <legend>{props.title}</legend>
+        <legend>
+            {props.questionMark && <span className="questionMark">?</span>}
+            {props.title}
+        </legend>
         {props.values.map(value => 
             <span key={value}>
                 <input 
+                    disabled={props.disabled && "disabled"}
                     type="radio"
                     name={props.name}
                     id={props.formatID(value)}
