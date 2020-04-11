@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/Form.css';
+import RadioFieldset from './RadioFieldset.js';
 
 class ImportForm extends React.Component {
     state = {
@@ -76,45 +77,23 @@ class ImportForm extends React.Component {
                 onSubmit={event => this.handleFormSubmit(event)}
                 className={this.props.visability ? "form form-import" : "hidden"}>
                 <div className="radio-container">
-                    <fieldset className="radio-boardSize">
-                            <legend>Board Size:</legend>
-                            <input 
-                                type="radio"
-                                name="boardSize"
-                                id="9x9"
-                                value="9"
-                                checked={this.state.boardSize === "9"}
-                                onChange={event => this.handleFormChange(event)} />
-                            <label htmlFor="9x9">9x9</label>
-                            <input 
-                                type="radio"
-                                name="boardSize"
-                                id="16x16"
-                                value="16"
-                                checked={this.state.boardSize === "16"}
-                                onChange={event => this.handleFormChange(event)} />
-                            <label htmlFor="16x16">16x16</label>
-                    </fieldset>
+                    <RadioFieldset 
+                        name="boardSize"
+                        title={"Board Size:"}
+                        formatID={value => `${value}x${value}`}
+                        values={["9", "16"]}
+                        stateToCheck={this.state.boardSize} 
+                        onChange={event => this.handleFormChange(event)} />
 
-                    <fieldset className="radio-inputMode">
-                        <legend><span className="questionMark">?</span>Input Mode:</legend>
-                        <input disabled
-                            type="radio"
-                            name="inputMode"
-                            id="row"
-                            value="row"
-                            checked={this.state.inputMode === "row"}
-                            onChange={event => this.handleFormChange(event)} />
-                        <label htmlFor="row">Row</label>
-                        <input disabled
-                            type="radio"
-                            name="inputMode"
-                            id="square"
-                            value="square"
-                            checked={this.state.inputMode === "square"}
-                            onChange={event => this.handleFormChange(event)} />
-                        <label htmlFor="square">Square</label>
-                    </fieldset>
+                    <RadioFieldset
+                        disabled={true}
+                        questionMark={true}
+                        name={"inputMode"}
+                        title={"Input Mode:"}
+                        formatID={value => value}
+                        values={["row", "square"]}
+                        stateToCheck={this.state.inputMode} 
+                        onChange={event => this.handleFormChange(event)} />
                 </div>
 
                 <div className="input-code-container">

@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/Form.css';
+import RadioFieldset from './RadioFieldset.js';
 
 class GenerateForm extends React.Component {
     state = {
@@ -30,6 +31,7 @@ class GenerateForm extends React.Component {
 
     handleFormSubmit(event) {
         event.preventDefault();
+        console.log(this.state);
         this.handleFormCancel();
         this.props.onSubmit(this.state);
     }
@@ -47,53 +49,21 @@ class GenerateForm extends React.Component {
                 onSubmit={event => this.handleFormSubmit(event)}
                 className={this.props.visability ? "form form-generate" : "hidden"}>
                 <div className="radio-container">
-                    <fieldset className="radio-boardSize">
-                        <legend>Board Size:</legend>
-                        <input 
-                            type="radio"
-                            name="boardSize"
-                            id="generate9"
-                            value="9"
-                            checked={this.state.boardSize === "9"}
-                            onChange={event => this.handleFormChange(event)} />
-                        <label htmlFor="generate9">9x9</label>
-                        <input 
-                            type="radio"
-                            name="boardSize"
-                            id="generate16"
-                            value="16"
-                            checked={this.state.boardSize === "16"}
-                            onChange={event => this.handleFormChange(event)} />
-                        <label htmlFor="generate16">16x16</label>
-                    </fieldset>
+                    <RadioFieldset 
+                        name={"boardSize"}
+                        title={"Board Size:"}
+                        formatID={value => `generate${value}`}
+                        values={["9", "16"]}
+                        stateToCheck={this.state.boardSize} 
+                        onChange={event => this.handleFormChange(event)} />
 
-                    <fieldset className="radio-difficulty">
-                        <legend>Difficulty:</legend>
-                        <input 
-                            type="radio"
-                            name="difficulty"
-                            id="easy"
-                            value="easy"
-                            checked={this.state.difficulty === "easy"}
-                            onChange={event => this.handleFormChange(event)} />
-                        <label htmlFor="easy">Easy</label>
-                        <input 
-                            type="radio"
-                            name="difficulty"
-                            id="medium"
-                            value="medium"
-                            checked={this.state.difficulty === "medium"}
-                            onChange={event => this.handleFormChange(event)} />
-                        <label htmlFor="medium">Medium</label>
-                        <input 
-                            type="radio"
-                            name="difficulty"
-                            id="hard"
-                            value="hard"
-                            checked={this.state.difficulty === "hard"}
-                            onChange={event => this.handleFormChange(event)} />
-                        <label htmlFor="hard">Hard</label>
-                    </fieldset>
+                    <RadioFieldset 
+                        name={"difficulty"}
+                        title={"Difficulty:"}
+                        formatID={value => value}
+                        values={["easy", "medium", "hard"]}
+                        stateToCheck={this.state.difficulty} 
+                        onChange={event => this.handleFormChange(event)} />
                 </div>
 
                 <input
