@@ -7,6 +7,8 @@ import ImportForm from './components/ImportForm.jsx';
 import ExportForm from './components/ExportForm.jsx';
 import GenerateForm from './components/GenerateForm.jsx';
 
+import sudokuSolver from './util/sudokuSolver.js';
+
 function arrayInRange(start, end) {
     return Array(end - start + 1).fill().map((_, idx) => start + idx)
 }
@@ -84,6 +86,10 @@ class App extends React.Component {
             buttonsVisability: false,
             exportVisability: true
         });
+    }
+
+    handleSolve() {
+        sudokuSolver(this.state.board);
     }
 
     render() {
