@@ -59,7 +59,7 @@ class ImportForm extends React.Component {
             inputMode: "",
             inputCode: "",
             showErrorMessage: false
-        }, () => this.props.onCancel())
+        }, () => this.props.onCancel());
     }
 
     render() {
