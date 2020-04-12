@@ -9,10 +9,6 @@ import GenerateForm from './components/GenerateForm.jsx';
 
 import sudokuSolver from './util/sudokuSolver.js';
 
-function arrayInRange(start, end) {
-    return Array(end - start + 1).fill().map((_, idx) => start + idx)
-}
-
 function generateGrid(size) {
     let grid = []; 
     let index = 0;
@@ -31,7 +27,6 @@ class App extends React.Component {
     state = {
         boardSize: 9,
         /* board: generateGrid(9), */
-        /* board: arrayInRange(0, 80), */
         board: [
             [" ", "3", " ", " ", " ", " ", " ", "5", " "],
             [" ", " ", "8", " ", "9", "1", "3", " ", " "],
