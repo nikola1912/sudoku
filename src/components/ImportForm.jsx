@@ -38,7 +38,11 @@ class ImportForm extends React.Component {
     }
 
     formatInputCode(inputCode) {
+<<<<<<< HEAD
         return inputCode.map(value => this.state.validInputs.includes(value.toUpperCase()) ? value.toUpperCase() : " ");
+=======
+        return inputCode.map(value => this.state.validInputs.includes(value.toUpperCase()) ? value.toUpperCase() : "_");
+>>>>>>> 30a3ff51dc1b6fa529bbc0b24e64deb646e73b3a
     }
 
     handleFormSubmit(event) {
