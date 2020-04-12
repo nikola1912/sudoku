@@ -23,20 +23,7 @@ class ImportForm extends React.Component {
         this.setState({inputCode});
     }
 
-    handleFormChange(event) {
-        switch (event.target.name) {
-            case "boardSize":
-                this.handleBoardSizeChange(event.target.value);
-                break;
-            case "inputMode":
-                this.handleInputModeChange(event.target.value);
-                break;
-            case "inputCode":
-                this.handleInputCodeChange(event.target.value);
-                break;
-            default:
-                break;
-        }
+    hideErrorMessage() {
         this.setState({showErrorMessage: false});
     }
 
@@ -69,6 +56,7 @@ class ImportForm extends React.Component {
     render() {
         return (
             <form noValidate
+                onChange={() => this.hideErrorMessage()}
                 onSubmit={event => this.handleFormSubmit(event)}
                 className={this.props.visability ? "form form-import" : "hidden"}>
                 <div className="radio-container">
@@ -78,7 +66,7 @@ class ImportForm extends React.Component {
                         formatID={value => `${value}x${value}`}
                         values={["9", "16"]}
                         stateToCheck={this.state.boardSize} 
-                        onChange={event => this.handleFormChange(event)} />
+                        onChange={event => this.handleBoardSizeChange(event.target.value)} />
 
                     <RadioFieldset
                         disabled={true}
@@ -88,7 +76,7 @@ class ImportForm extends React.Component {
                         formatID={value => value}
                         values={["row", "square"]}
                         stateToCheck={this.state.inputMode} 
-                        onChange={event => this.handleFormChange(event)} />
+                        onChange={event => this.handleInputModeChange(event.target.value)} />
                 </div>
 
                 <div className="input-code-container">
@@ -100,7 +88,7 @@ class ImportForm extends React.Component {
                         type="text"
                         name="inputCode"
                         value={this.state.inputCode}
-                        onChange={event => this.handleFormChange(event)} />
+                        onChange={event => this.handleInputCodeChange(event.target.value)} />
                     <ErrorMessage 
                         className={`error-message ${this.state.showErrorMessage ? "show-error-message" : ""}`}
                         inputValid={() => this.validateForm()}
