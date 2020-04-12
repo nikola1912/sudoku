@@ -8,10 +8,15 @@ class ImportForm extends React.Component {
         boardSize: "9",
         inputMode: "",
         inputCode: "",
+        validInputs: ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
         showErrorMessage: false
     }
 
     handleBoardSizeChange(boardSize) {
+        if (boardSize === "9")
+            this.setState({validInputs: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]});
+        else if (boardSize === "16")
+            this.setState({validInputs: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"]});
         this.setState({boardSize});
     }
 
@@ -32,12 +37,16 @@ class ImportForm extends React.Component {
         return this.state.inputCode.length === requiredCodeLength;
     }
 
+    formatInputCode(inputCode) {
+        return inputCode.map(value => this.state.validInputs.includes(value.toUpperCase()) ? value.toUpperCase() : " ");
+    }
+
     handleFormSubmit(event) {
         event.preventDefault();
         if (this.validateForm()) {
             this.handleFormCancel();
             this.props.onSubmit({
-                board: arrayToMatrix(Array.from(this.state.inputCode), this.state.boardSize),
+                board: arrayToMatrix(this.formatInputCode(Array.from(this.state.inputCode)), this.state.boardSize),
                 boardSize: Number(this.state.boardSize),
                 inputMode: this.state.inputMode
             });
