@@ -1,22 +1,22 @@
 import React from 'react';
 
 const Board = ({board, boardSize}) => (
-    <div 
-        className={"board"}
-        style={{gridTemplate: `repeat(${boardSize}, 1fr) / repeat(${boardSize}, 1fr)`}}>
-            {board.map((row, rowIndex) => row.map((cellValue, columnIndex) => (
-                <Cell
-                    key={rowIndex * boardSize + columnIndex}
-                    value={cellValue}
-                    borderClasses={"" +
-                        (columnIndex % boardSize**(1/2) === 0 ? "border-left " : "") +
-                        (rowIndex % boardSize**(1/2) === 0 ? "border-top " : "")} />
-            )))}
+    <div className={"board"}>
+        {board.map((row, rowIndex) => 
+            <div className="board-row" key={rowIndex}>
+                {row.map((cellValue, columnIndex) => 
+                    <Cell
+                        key={rowIndex * boardSize + columnIndex}
+                        value={cellValue}
+                        boardSize={boardSize} />
+                )}
+            </div>
+        )}
     </div>
 );
 
 const Cell = (props) => (
-    <div className={`board-cell ${props.borderClasses}`}>
+    <div className={`board-cell board-cell-size${props.boardSize}`}>
         {props.value}
     </div>
 );
