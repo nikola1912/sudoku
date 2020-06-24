@@ -4,7 +4,7 @@
     --board-color: rgb(65, 65, 65);
     --button-color: rgb(241, 241, 241);
     --button-hover: rgb(245, 245, 245);
-    --button-selected: rgb(234, 234, 234);
+    --button-clicked: rgb(238, 238, 238);
     --button-border: rgb(221, 221, 221);
     --button-border-selected: rgb(176, 176, 176);
 }
@@ -101,6 +101,7 @@
 .button:active {
     position: relative;
     top: 0.5px;
+    background-color: var(--button-clicked);
 }
 
 .hidden {
