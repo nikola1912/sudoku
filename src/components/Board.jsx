@@ -1,24 +1,34 @@
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-const Board = ({board, boardSize}) => (
-    <div className={"board"}>
-        {board.map((row, rowIndex) => 
-            <div className="board-row" key={rowIndex}>
-                {row.map((cellValue, columnIndex) => 
-                    <Cell
-                        key={rowIndex * boardSize + columnIndex}
-                        value={cellValue}
-                        boardSize={boardSize} />
-                )}
-            </div>
-        )}
-    </div>
-);
+const Board = ({ board, boardSize }) => (
+  <div className={'board'}>
+    {board.map((row, rowIndex) => (
+      <div className="board-row" key={rowIndex}>
+        {row.map((cellValue, columnIndex) => (
+          <Cell
+            key={rowIndex * boardSize + columnIndex}
+            value={cellValue}
+            boardSize={boardSize}
+          />
+        ))}
+      </div>
+    ))}
+  </div>
+)
 
-const Cell = (props) => (
-    <div className={`board-cell board-cell-size${props.boardSize}`}>
-        {props.value}
-    </div>
-);
+const Cell = ({ boardSize, value }) => (
+  <div className={`board-cell board-cell-size${boardSize}`}>{value}</div>
+)
 
-export default Board;
+Board.propTypes = {
+  board: PropTypes.array,
+  boardSize: PropTypes.number
+}
+
+Cell.propTypes = {
+  boardSize: PropTypes.number,
+  value: PropTypes.string
+}
+
+export default Board
