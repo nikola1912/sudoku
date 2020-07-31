@@ -1,16 +1,17 @@
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-class ExportForm extends React.Component {
+const ExportForm = ({ visability, onCancel }) => (
+  <div className={`${visability ? 'form form-export' : 'hidden'}`}>
+    <button className="button" onClick={onCancel}>
+      Cancel
+    </button>
+  </div>
+)
 
-    render() {
-        return (
-            <div className={`${this.props.visability ? "form form-export" : "hidden"}`}>
-                <button
-                    className="button"
-                    onClick={this.props.onCancel}>Cancel</button>
-            </div>
-        )
-    }
+ExportForm.propTypes = {
+  visability: PropTypes.bool,
+  onCancel: PropTypes.func
 }
 
-export default ExportForm;
+export default ExportForm
