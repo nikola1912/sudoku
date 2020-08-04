@@ -5,6 +5,7 @@
     "jest/globals": true
   },
   "extends": [
+    "react-app",
     "plugin:react/recommended",
     "standard",
     "plugin:prettier/recommended"
@@ -20,12 +21,7 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "prettier",
-    "prefer-arrow",
-    "jest"
-  ],
+  "plugins": ["react", "prettier", "prefer-arrow", "jest"],
   "rules": {
     "prefer-arrow/prefer-arrow-functions": [
       "error",
@@ -33,23 +29,6 @@
         "disallowPrototype": true,
         "singleReturnOnly": false,
         "classPropertiesAllowed": false
-      }
-    ],
-    "import/order": [
-      "error",
-      {
-        "newlines-between": "always",
-        "groups": [
-          "builtin",
-          "external",
-          "unknown",
-          "parent",
-          "sibling",
-          "index"
-        ],
-        "pathGroupsExcludedImportTypes": [
-          "builtin"
-        ]
       }
     ]
   },

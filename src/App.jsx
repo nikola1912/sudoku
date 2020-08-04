@@ -1,129 +1,137 @@
-import React from 'react';
-import './styles/App.css';
+import React from 'react'
+import './styles/App.css'
 
-import Board from './components/Board.jsx';
-import { HeaderButtons, FooterButtons } from './components/Buttons.jsx';
-import ImportForm from './components/ImportForm.jsx';
-import ExportForm from './components/ExportForm.jsx';
-import GenerateForm from './components/GenerateForm.jsx';
+import ExportForm from './components/ExportForm.jsx'
+import GenerateForm from './components/GenerateForm.jsx'
+import sudokuSolver from './util/sudokuSolver.js'
+import Board from './components/Board.jsx'
+import { HeaderButtons, FooterButtons } from './components/Buttons.jsx'
+import ImportForm from './components/ImportForm.jsx'
 
-import sudokuSolver from './util/sudokuSolver.js';
-
-function generateGrid(size) {
-    let grid = []; 
-    let index = 0;
-    for (let i = 0; i < size; i++) {
-        let row = [];
-        for (let j = 0; j < size; j++) {
-            row.push(index);
-            index++;
-        }
-        grid.push(row);
+/* const generateGrid = size => {
+  const grid = []
+  let index = 0
+  for (let i = 0; i < size; i++) {
+    const row = []
+    for (let j = 0; j < size; j++) {
+      row.push(index)
+      index++
     }
-    return grid;
-}
+    grid.push(row)
+  }
+  return grid
+} */
 
 class App extends React.Component {
-    state = {
-        boardSize: 9,
-        /* board: generateGrid(9), */
-        board: [
-            [" ", "3", " ", " ", " ", " ", " ", "5", " "],
-            [" ", " ", "8", " ", "9", "1", "3", " ", " "],
-            ["6", " ", " ", "4", " ", " ", "7", " ", " "],
-            [" ", " ", "3", "8", "1", " ", " ", " ", " "],
-            [" ", " ", "6", " ", " ", " ", "2", " ", " "],
-            [" ", " ", " ", " ", "3", "4", "8", " ", " "],
-            [" ", " ", "1", " ", " ", "8", " ", " ", "9"],
-            [" ", " ", "4", "1", "2", " ", "6", " ", " "],
-            [" ", "6", " ", " ", " ", " ", " ", "4", " "]
-        ],
-        buttonsVisability: true,
-        importVisability: false,
-        generateVisability: false,
-        exportVisability: false,
-        testMode: false
-    };
-    
-    handleImportSubmit(importData) {
-        this.setState(importData);
+  constructor(props) {
+    super(props)
+    this.state = {
+      boardSize: 9,
+      /* board: generateGrid(9), */
+      board: [
+        [' ', '3', ' ', ' ', ' ', ' ', ' ', '5', ' '],
+        [' ', ' ', '8', ' ', '9', '1', '3', ' ', ' '],
+        ['6', ' ', ' ', '4', ' ', ' ', '7', ' ', ' '],
+        [' ', ' ', '3', '8', '1', ' ', ' ', ' ', ' '],
+        [' ', ' ', '6', ' ', ' ', ' ', '2', ' ', ' '],
+        [' ', ' ', ' ', ' ', '3', '4', '8', ' ', ' '],
+        [' ', ' ', '1', ' ', ' ', '8', ' ', ' ', '9'],
+        [' ', ' ', '4', '1', '2', ' ', '6', ' ', ' '],
+        [' ', '6', ' ', ' ', ' ', ' ', ' ', '4', ' ']
+      ],
+      buttonsVisability: true,
+      importVisability: false,
+      generateVisability: false,
+      exportVisability: false,
+      testMode: false
     }
+  }
 
-    handleGenerateSubmit(generateData) {
-        console.log(generateData);
-    }
+  handleImportSubmit(importData) {
+    this.setState(importData)
+  }
 
-    handleCancel() {
-        this.setState({
-            importVisability: false,
-            generateVisability: false,
-            exportVisability: false,
-            buttonsVisability: true
-        });
-    }
-    
-    displayImportForm() {
-        this.setState({
-            buttonsVisability: false,
-            importVisability: true
-        });
-    }
-    
-    displayGenerateForm() {
-        this.setState({
-            buttonsVisability: false,
-            generateVisability: true
-        });
-    }
+  handleGenerateSubmit(generateData) {
+    console.log(generateData)
+  }
 
-    displayExportForm() {
-        this.setState({
-            buttonsVisability: false,
-            exportVisability: true
-        });
-    }
+  handleCancel() {
+    this.setState({
+      importVisability: false,
+      generateVisability: false,
+      exportVisability: false,
+      buttonsVisability: true
+    })
+  }
 
-    handleSolve() {
-        sudokuSolver(this.state.board);
-    }
+  displayImportForm() {
+    this.setState({
+      buttonsVisability: false,
+      importVisability: true
+    })
+  }
 
-    render() {
-        return (
-            <div className="game">
-                <div className="header-Container">
-                    <HeaderButtons
-                        onSolve={() => this.handleSolve()}
-                        onReset={() => this.handleReset()} />
-                </div>
+  displayGenerateForm() {
+    this.setState({
+      buttonsVisability: false,
+      generateVisability: true
+    })
+  }
 
-                <div className="board-container">
-                    <Board 
-                        board={this.state.board}
-                        boardSize={this.state.boardSize}
-                        testMode={this.state.testMode} />
-                </div>
+  displayExportForm() {
+    this.setState({
+      buttonsVisability: false,
+      exportVisability: true
+    })
+  }
 
-                <div className="footer-container">
-                    <FooterButtons
-                        onImport={() => this.displayImportForm()}
-                        onExport={() => this.displayExportForm()}
-                        onGenerate={() => this.displayGenerateForm()}
-                        visability={this.state.buttonsVisability} />
-                    <ImportForm
-                        onSubmit={(importData) => this.handleImportSubmit(importData)}
-                        onCancel={() => this.handleCancel()}
-                        visability={this.state.importVisability} />
-                    <GenerateForm 
-                        onSubmit={(generateData) => this.handleGenerateSubmit(generateData)}
-                        onCancel={() => this.handleCancel()}
-                        visability={this.state.generateVisability} />
-                    <ExportForm
-                        onCancel={() => this.handleCancel()}
-                        visability={this.state.exportVisability} />
-                </div>
-            </div>
-        );
-    }
+  handleSolve() {
+    sudokuSolver(this.state.board)
+  }
+
+  render() {
+    return (
+      <div className="game">
+        <div className="header-Container">
+          <HeaderButtons
+            onSolve={() => this.handleSolve()}
+            onReset={() => this.handleReset()}
+          />
+        </div>
+
+        <div className="board-container">
+          <Board
+            board={this.state.board}
+            boardSize={this.state.boardSize}
+            testMode={this.state.testMode}
+          />
+        </div>
+
+        <div className="footer-container">
+          <FooterButtons
+            onImport={() => this.displayImportForm()}
+            onExport={() => this.displayExportForm()}
+            onGenerate={() => this.displayGenerateForm()}
+            visability={this.state.buttonsVisability}
+          />
+          <ImportForm
+            onSubmit={importData => this.handleImportSubmit(importData)}
+            onCancel={() => this.handleCancel()}
+            visability={this.state.importVisability}
+          />
+          <GenerateForm
+            onSubmit={generateData => this.handleGenerateSubmit(generateData)}
+            onCancel={() => this.handleCancel()}
+            visability={this.state.generateVisability}
+          />
+          <ExportForm
+            onCancel={() => this.handleCancel()}
+            visability={this.state.exportVisability}
+          />
+        </div>
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
