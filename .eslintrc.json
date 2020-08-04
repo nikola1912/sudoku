@@ -7,10 +7,7 @@
   "extends": [
     "plugin:react/recommended",
     "standard",
-    "plugin:prettier/recommended",
-    "eslint:recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings"
+    "plugin:prettier/recommended"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -27,8 +24,7 @@
     "react",
     "prettier",
     "prefer-arrow",
-    "jest",
-    "import"
+    "jest"
   ],
   "rules": {
     "prefer-arrow/prefer-arrow-functions": [
@@ -55,12 +51,7 @@
           "builtin"
         ]
       }
-    ],
-    "import/no-unresolved": 2,
-    "import/named": 2,
-    "import/namespace": 2,
-    "import/default": 2,
-    "import/export": 2
+    ]
   },
   "settings": {
     "react": {
