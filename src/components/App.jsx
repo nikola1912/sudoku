@@ -40,7 +40,6 @@ const App = () => {
   const [importVisability, setImportVisability] = useState(false)
   const [generateVisability, setGenerateVisability] = useState(false)
   const [exportVisability, setExportVisability] = useState(false)
-  const [testMode] = useState(false)
 
   const handleImportSubmit = ({ board, boardSize, inputMode }) => {
     setBoard(board)
@@ -80,7 +79,7 @@ const App = () => {
 
   return (
     <div className="game">
-      <div className="header-Container">
+      <div className="header-container">
         <HeaderButtons
           onSolve={() => handleSolve()}
           // onReset={() => handleReset()} TODO
@@ -88,7 +87,7 @@ const App = () => {
       </div>
 
       <div className="board-container">
-        <Board board={board} boardSize={boardSize} testMode={testMode} />
+        <Board board={board} boardSize={boardSize} />
       </div>
 
       <div className="footer-container">
