@@ -1,114 +1,114 @@
 .form {
-    text-align: center;
-    opacity: 1;
-    transition: opacity 0.35s ease-out;
+  text-align: center;
+  opacity: 1;
+  transition: opacity 0.35s ease-out;
 }
 
 .form .questionMark {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    cursor: pointer;
-    font-size: 0.8em;
-    width: 15px;
-    height: 15px;
-    margin-right: 2px;
-    border-radius: 100%;
-    color: rgb(94, 94, 94);
-    background-color: rgb(231, 231, 231);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  cursor: pointer;
+  font-size: 0.8em;
+  width: 15px;
+  height: 15px;
+  margin-right: 2px;
+  border-radius: 100%;
+  color: rgb(94, 94, 94);
+  background-color: rgb(231, 231, 231);
 }
 
 .radio-container {
-    display: flex;
-    justify-content: center;
-    margin: 15px 0;
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
 }
 
 .radio-container fieldset {
-    border: 0;
-    padding-bottom: 0;
+  border: 0;
+  padding-bottom: 0;
 }
 
 .radio-container legend {
-    display: flex;
-    align-items: center;
-    font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
 }
 
-.radio-container input[type="radio"] {
-    appearance: none;
-    display: none;
+.radio-container input[type='radio'] {
+  appearance: none;
+  display: none;
 }
 
-.radio-container input[type="radio"]:disabled + label {
-    cursor: default;
-    opacity: 0.6;
+.radio-container input[type='radio']:disabled + label {
+  cursor: default;
+  opacity: 0.6;
 }
 
-.radio-container input[type="radio"]:hover + label {
-    background-color: var(--button-hover);
+.radio-container input[type='radio']:hover + label {
+  background-color: var(--button-hover);
 }
 
-.radio-container input[type="radio"]:checked + label {
-    border: 1px solid var(--button-border-selected);
-    background-color: var(--button-selected);
+.radio-container input[type='radio']:checked + label {
+  border: 1px solid var(--button-border-selected);
+  background-color: var(--button-selected);
 }
 
 .radio-container label {
-    display: inline-block;
-    cursor: pointer;
-    width: 55px;
-    margin: 0 5px;
-    padding: 3px;
-    font-size: 0.85em;
-    border-radius: 3px;
-    border: 1px solid var(--button-border);
-    background-color: var(--button-color);
+  display: inline-block;
+  cursor: pointer;
+  width: 55px;
+  margin: 0 5px;
+  padding: 3px;
+  font-size: 0.85em;
+  border-radius: 3px;
+  border: 1px solid var(--button-border);
+  background-color: var(--button-color);
 }
 
 .radio-container + .button {
-    margin: 9px;
+  margin: 9px;
 }
 
 .input-code-container {
-    margin-bottom: 7px;
+  margin-bottom: 7px;
 }
 
 .input-code-container label {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.9em;
-    margin-bottom: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9em;
+  margin-bottom: 4px;
 }
 
 .input-code-container input {
-    display: block;
-    margin: 0 auto;
-    padding: 3px;
-    width: 390px;
-    outline: 0;
-    color: var(--code-color);
-    background-color: rgb(242, 246, 251);
-    font-size: 0.7em;
-    border-radius: 3px;
-    border: 1px solid var(--button-border);
+  display: block;
+  margin: 0 auto;
+  padding: 3px;
+  width: 390px;
+  outline: 0;
+  color: var(--code-color);
+  background-color: rgb(242, 246, 251);
+  font-size: 0.7em;
+  border-radius: 3px;
+  border: 1px solid var(--button-border);
 }
 
 .input-code-container .error-message {
-    color: red;
-    font-size: 0.8em;
-    opacity: 0;
+  color: red;
+  font-size: 0.8em;
+  opacity: 0;
 }
 
 .input-code-container .error-message:empty:before {
-    content: "\200b";
+  content: '\200b';
 }
 
 .input-code-container .show-error-message {
-    opacity: 1;
+  opacity: 1;
 }
 
 .input-code-container + .button {
-    margin: 0px 7px;
+  margin: 0px 7px;
 }
