@@ -23,11 +23,11 @@ const Cell = ({ boardSize, value }) => (
 
 Board.propTypes = {
   board: PropTypes.array,
-  boardSize: PropTypes.number
+  boardSize: PropTypes.string
 }
 
 Cell.propTypes = {
-  boardSize: PropTypes.number,
+  boardSize: PropTypes.string,
   value: PropTypes.string
 }
 

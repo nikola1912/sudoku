@@ -66,7 +66,7 @@ const ImportForm = ({ onSubmit, onCancel, visability }) => {
       handleFormCancel()
       onSubmit({
         board: arrayToMatrix(formatInputCode(Array.from(inputCode)), boardSize),
-        boardSize: Number(boardSize),
+        boardSize: boardSize,
         inputMode: inputMode
       })
     } else setShowErrorMessage(true)
