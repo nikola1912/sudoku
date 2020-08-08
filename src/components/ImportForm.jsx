@@ -118,12 +118,7 @@ const ImportForm = ({ onSubmit, onCancel, visability }) => {
           value={inputCode}
           onChange={event => handleInputCodeChange(event.target.value)}
         />
-        <ErrorMessage
-          className={`error-message ${
-            errorMessage ? 'show-error-message' : ''
-          }`}
-          errorMessage={errorMessage}
-        />
+        <span className={'error-message'}>{errorMessage}</span>
       </div>
 
       <input type="submit" value="Submit" className="button" />
@@ -137,19 +132,10 @@ const ImportForm = ({ onSubmit, onCancel, visability }) => {
   )
 }
 
-const ErrorMessage = ({ className, errorMessage }) => (
-  <span className={className}>{errorMessage}</span>
-)
-
 ImportForm.propTypes = {
   onSubmit: PropTypes.func,
   onCancel: PropTypes.func,
   visability: PropTypes.bool
-}
-
-ErrorMessage.propTypes = {
-  className: PropTypes.string,
-  errorMessage: PropTypes.string
 }
 
 export default ImportForm

@@ -98,15 +98,10 @@
 .input-code-container .error-message {
   color: red;
   font-size: 0.8em;
-  opacity: 0;
 }
 
 .input-code-container .error-message:empty:before {
   content: '\200b';
-}
-
-.input-code-container .show-error-message {
-  opacity: 1;
 }
 
 .input-code-container + .button {
