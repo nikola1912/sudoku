@@ -6,7 +6,7 @@ import ImportForm from './ImportForm.jsx'
 import ExportForm from './ExportForm.jsx'
 import GenerateForm from './GenerateForm.jsx'
 import { HeaderButtons, FooterButtons } from './Buttons.jsx'
-import sudokuSolver from '../util/sudokuSolver.js'
+import sudokuSolver from '../util/solveSudoku.js'
 
 /* const generateGrid = size => {
   const grid = []
