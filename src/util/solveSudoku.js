@@ -2,8 +2,6 @@ var CHUNK_SIZE = 3
 var ROW_COL_SIZE = CHUNK_SIZE * CHUNK_SIZE
 var SIZE = ROW_COL_SIZE * ROW_COL_SIZE
 
-var MIN_HINTS = 17
-
 const checkRow = (puzzle, number, index) => {
   var start = Math.floor(index / ROW_COL_SIZE) * ROW_COL_SIZE
   for (var i = 0; i < ROW_COL_SIZE; i += 1) {
@@ -78,44 +76,6 @@ const solveSudoku = (puzzle, options) => {
     hintCheck: true,
     outputArray: false,
     maxIterations: 1 << 20
-  }
-
-  if (options !== undefined) {
-    Object.assign(opts, options)
-  }
-
-  if (typeof puzzle === 'string') {
-    puzzle = puzzle.split('')
-  }
-
-  if (!Array.isArray(puzzle)) {
-    throw new TypeError('Puzzle must be string or array.')
-  }
-
-  if (puzzle.length !== SIZE) {
-    throw new Error('Puzzle is an invalid size.')
-  }
-
-  var hints = 0
-  puzzle = puzzle.map(element => {
-    if (
-      element === opts.emptyValue ||
-      element === parseInt(opts.emptyValue, 10)
-    ) {
-      return 0
-    }
-    hints++
-    var value = parseInt(element, 10)
-    if (isNaN(value) || value > 9 || value < 1) {
-      throw new TypeError('Invalid puzzle value: ' + element)
-    }
-    return value
-  })
-
-  if (opts.hintCheck && hints < MIN_HINTS) {
-    throw new Error(
-      'A valid puzzle must have at least ' + MIN_HINTS + ' hints.'
-    )
   }
 
   if (!recursiveSolve(puzzle, 0, opts.maxIterations)) {

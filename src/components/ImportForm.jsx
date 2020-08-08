@@ -19,14 +19,11 @@ const ImportForm = ({ onSubmit, onCancel, visability }) => {
 
   const handleFormSubmit = event => {
     event.preventDefault()
-    const newErrorMessage = validateSudoku(inputCode, boardSize)
+    const board = formatSudoku(inputCode, boardSize)
+    const newErrorMessage = validateSudoku(board, boardSize)
     if (!newErrorMessage) {
       handleFormCancel()
-      onSubmit({
-        board: formatSudoku(inputCode, boardSize),
-        boardSize: boardSize,
-        inputMode: inputMode
-      })
+      onSubmit({ board, boardSize, inputMode })
     } else setErrorMessage(newErrorMessage)
   }
 
