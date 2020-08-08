@@ -3,58 +3,19 @@ import PropTypes from 'prop-types'
 
 import '../styles/Form.css'
 import RadioFieldset from './RadioFieldset.jsx'
-import arrayToMatrix from '../util/arrayToMatrix.js'
 import validateSudoku from '../util/validateSudoku.js'
+import formatSudoku from '../util/formatSudoku.js'
 
 const ImportForm = ({ onSubmit, onCancel, visability }) => {
   const [boardSize, setBoardSize] = useState('9')
   const [inputMode, setInputMode] = useState('')
   const [inputCode, setInputCode] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
-  const [validInputs, setValidInputs] = useState([
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9'
-  ])
 
   const handleInputModeChange = inputMode => setInputMode(inputMode)
   const handleInputCodeChange = inputCode => setInputCode(inputCode)
+  const handleBoardSizeChange = boardSize => setBoardSize(boardSize)
   const hideErrorMessage = () => setErrorMessage('')
-  const handleBoardSizeChange = boardSize => {
-    const possibleBoardSizes = {
-      '9': ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
-      '16': [
-        '1',
-        '2',
-        '3',
-        '4',
-        '5',
-        '6',
-        '7',
-        '8',
-        '9',
-        'A',
-        'B',
-        'C',
-        'D',
-        'E',
-        'F'
-      ]
-    }
-    setValidInputs(possibleBoardSizes[boardSize])
-    setBoardSize(boardSize)
-  }
-
-  const formatInputCode = inputCode =>
-    inputCode.map(value =>
-      validInputs.includes(value.toUpperCase()) ? value.toUpperCase() : ' '
-    )
 
   const handleFormSubmit = event => {
     event.preventDefault()
@@ -62,7 +23,7 @@ const ImportForm = ({ onSubmit, onCancel, visability }) => {
     if (!newErrorMessage) {
       handleFormCancel()
       onSubmit({
-        board: arrayToMatrix(formatInputCode(Array.from(inputCode)), boardSize),
+        board: formatSudoku(inputCode, boardSize),
         boardSize: boardSize,
         inputMode: inputMode
       })
