@@ -4,12 +4,13 @@ import PropTypes from 'prop-types'
 import '../styles/Form.css'
 import RadioFieldset from './RadioFieldset.jsx'
 import arrayToMatrix from '../util/arrayToMatrix.js'
+import validateSudoku from '../util/validateSudoku.js'
 
 const ImportForm = ({ onSubmit, onCancel, visability }) => {
   const [boardSize, setBoardSize] = useState('9')
   const [inputMode, setInputMode] = useState('')
   const [inputCode, setInputCode] = useState('')
-  const [showErrorMessage, setShowErrorMessage] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const [validInputs, setValidInputs] = useState([
     '1',
     '2',
@@ -24,7 +25,7 @@ const ImportForm = ({ onSubmit, onCancel, visability }) => {
 
   const handleInputModeChange = inputMode => setInputMode(inputMode)
   const handleInputCodeChange = inputCode => setInputCode(inputCode)
-  const hideErrorMessage = () => setShowErrorMessage(false)
+  const hideErrorMessage = () => setErrorMessage('')
   const handleBoardSizeChange = boardSize => {
     const possibleBoardSizes = {
       '9': ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
@@ -50,11 +51,6 @@ const ImportForm = ({ onSubmit, onCancel, visability }) => {
     setBoardSize(boardSize)
   }
 
-  const validateForm = () => {
-    const requiredCodeLength = parseInt(boardSize) ** 2
-    return inputCode.length === requiredCodeLength
-  }
-
   const formatInputCode = inputCode =>
     inputCode.map(value =>
       validInputs.includes(value.toUpperCase()) ? value.toUpperCase() : ' '
@@ -62,21 +58,22 @@ const ImportForm = ({ onSubmit, onCancel, visability }) => {
 
   const handleFormSubmit = event => {
     event.preventDefault()
-    if (validateForm()) {
+    const newErrorMessage = validateSudoku(inputCode, boardSize)
+    if (!newErrorMessage) {
       handleFormCancel()
       onSubmit({
         board: arrayToMatrix(formatInputCode(Array.from(inputCode)), boardSize),
         boardSize: boardSize,
         inputMode: inputMode
       })
-    } else setShowErrorMessage(true)
+    } else setErrorMessage(newErrorMessage)
   }
 
   const handleFormCancel = () => {
     setBoardSize('9')
     setInputMode('')
     setInputCode('')
-    setShowErrorMessage(false)
+    setErrorMessage('')
     onCancel()
   }
 
@@ -123,10 +120,9 @@ const ImportForm = ({ onSubmit, onCancel, visability }) => {
         />
         <ErrorMessage
           className={`error-message ${
-            showErrorMessage ? 'show-error-message' : ''
+            errorMessage ? 'show-error-message' : ''
           }`}
-          inputValid={() => validateForm()}
-          requiredCodeLength={boardSize ** 2}
+          errorMessage={errorMessage}
         />
       </div>
 
@@ -141,12 +137,8 @@ const ImportForm = ({ onSubmit, onCancel, visability }) => {
   )
 }
 
-const ErrorMessage = ({ className, inputValid, requiredCodeLength }) => (
-  <span className={className}>
-    {inputValid
-      ? `Input code doesn't contain ${requiredCodeLength} values`
-      : ''}
-  </span>
+const ErrorMessage = ({ className, errorMessage }) => (
+  <span className={className}>{errorMessage}</span>
 )
 
 ImportForm.propTypes = {
@@ -157,8 +149,7 @@ ImportForm.propTypes = {
 
 ErrorMessage.propTypes = {
   className: PropTypes.string,
-  inputValid: PropTypes.bool,
-  requiredCodeLength: PropTypes.number
+  errorMessage: PropTypes.string
 }
 
 export default ImportForm
