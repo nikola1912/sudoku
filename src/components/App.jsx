@@ -74,7 +74,7 @@ const App = () => {
   }
 
   const handleSolve = () => {
-    sudokuSolver(board)
+    setBoard(sudokuSolver(board, boardSize))
   }
 
   return (
