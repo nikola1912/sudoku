@@ -3,27 +3,23 @@ import PropTypes from 'prop-types'
 
 const HeaderButtons = ({ onSolve, onRestart }) => (
   <div className="buttons-container">
-    <button className="button" onClick={onSolve}>
-      Solve
-    </button>
-    <button className="button" onClick={onRestart}>
-      Restart
-    </button>
+    <Button text="Solve" onClick={onSolve} />
+    <Button text="Restart" onClick={onRestart} />
   </div>
 )
 
 const FooterButtons = ({ visability, onImport, onGenerate, onExport }) => (
   <div className={visability ? 'buttons-container' : 'hidden'}>
-    <button className="button" onClick={onImport}>
-      Import
-    </button>
-    <button className="button" onClick={onGenerate}>
-      Generate
-    </button>
-    <button className="button" onClick={onExport}>
-      Export
-    </button>
+    <Button text="Import" onClick={onImport} />
+    <Button text="Generate" onClick={onGenerate} />
+    <Button text="Export" onClick={onExport} />
   </div>
+)
+
+const Button = ({ text, onClick }) => (
+  <button className="button" onClick={onClick}>
+    {text}
+  </button>
 )
 
 HeaderButtons.propTypes = {
@@ -36,6 +32,11 @@ FooterButtons.propTypes = {
   onImport: PropTypes.func,
   onGenerate: PropTypes.func,
   onExport: PropTypes.func
+}
+
+Button.propTypes = {
+  text: PropTypes.string,
+  onClick: PropTypes.func
 }
 
 export { HeaderButtons, FooterButtons }
