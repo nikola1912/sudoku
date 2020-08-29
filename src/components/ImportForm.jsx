@@ -23,7 +23,7 @@ const ImportForm = ({ onSubmit, onCancel, visability }) => {
     const newErrorMessage = validateSudoku(board, boardSize)
     if (!newErrorMessage) {
       handleFormCancel()
-      onSubmit({ board, boardSize, inputMode })
+      onSubmit(board, boardSize)
     } else setErrorMessage(newErrorMessage)
   }
 
@@ -38,8 +38,8 @@ const ImportForm = ({ onSubmit, onCancel, visability }) => {
   return (
     <form
       noValidate
-      onChange={() => hideErrorMessage()}
-      onSubmit={event => handleFormSubmit(event)}
+      onChange={hideErrorMessage}
+      onSubmit={handleFormSubmit}
       className={visability ? 'form form-import' : 'hidden'}
     >
       <div className="radio-container">
@@ -84,7 +84,7 @@ const ImportForm = ({ onSubmit, onCancel, visability }) => {
         type="button"
         value="Cancel"
         className="button"
-        onClick={() => handleFormCancel()}
+        onClick={handleFormCancel}
       />
     </form>
   )

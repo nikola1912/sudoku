@@ -18,9 +18,8 @@ const GenerateForm = ({ onSubmit, onCancel, visability }) => {
 
   const handleFormSubmit = event => {
     event.preventDefault()
-    console.log(`Board size: ${boardSize} | Difficulty: ${difficulty}`)
     handleFormCancel()
-    onSubmit({ boardSize, difficulty })
+    onSubmit(boardSize, difficulty)
   }
 
   const handleFormCancel = () => {
@@ -32,7 +31,7 @@ const GenerateForm = ({ onSubmit, onCancel, visability }) => {
   return (
     <form
       noValidate
-      onSubmit={event => handleFormSubmit(event)}
+      onSubmit={handleFormSubmit}
       className={visability ? 'form form-generate' : 'hidden'}
     >
       <div className="radio-container">
@@ -42,7 +41,7 @@ const GenerateForm = ({ onSubmit, onCancel, visability }) => {
           formatID={value => `generate${value}`}
           values={['9', '16']}
           stateToCheck={boardSize}
-          onChange={event => handleFormChange(event)}
+          onChange={handleFormChange}
         />
 
         <RadioFieldset
@@ -51,7 +50,7 @@ const GenerateForm = ({ onSubmit, onCancel, visability }) => {
           formatID={value => value}
           values={['easy', 'medium', 'hard']}
           stateToCheck={difficulty}
-          onChange={event => handleFormChange(event)}
+          onChange={handleFormChange}
         />
       </div>
 
@@ -60,7 +59,7 @@ const GenerateForm = ({ onSubmit, onCancel, visability }) => {
         type="button"
         value="Cancel"
         className="button"
-        onClick={() => handleFormCancel()}
+        onClick={handleFormCancel}
       />
     </form>
   )
