@@ -30,7 +30,8 @@
         "singleReturnOnly": false,
         "classPropertiesAllowed": false
       }
-    ]
+    ],
+    "react/react-in-jsx-scope": 0
   },
   "settings": {
     "react": {

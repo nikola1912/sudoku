@@ -8,7 +8,7 @@ const validateSudoku = (board, boardSize) => {
 
   const checkHints = (board, boardSize) => {
     const hintsInRow = row => row.filter(x => x !== ' ').length
-    const possibleMinimumHints = { '9': 17, '16': 55 }
+    const possibleMinimumHints = { 9: 17, 16: 55 }
     const minHints = possibleMinimumHints[boardSize]
     const hintsInBoard = board.reduce((acc, row) => acc + hintsInRow(row), 0)
     return hintsInBoard < minHints

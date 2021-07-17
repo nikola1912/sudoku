@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import '../styles/App.css'
 
 import Board from './Board.jsx'
