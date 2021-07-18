@@ -1,5 +1,7 @@
-import { arrayToMatrix } from '../helpers/arrayToMatrix'
-import { BoardModel, BoardSize } from '../typings'
+import { arrayToMatrix } from 'utils/helpers'
+
+import { EMPTY_CELL } from './constants'
+import { BoardModel, BoardModelCompound, BoardSize } from './typings'
 
 const solveBoard = (board: number[], boardSize: number) => {
   const CHUNK_SIZE = Math.sqrt(boardSize)
@@ -73,14 +75,14 @@ const solveBoard = (board: number[], boardSize: number) => {
   return board
 }
 
-const formatInput = (board: BoardModel): number[] =>
+const formatInput = (board: BoardModelCompound): number[] =>
   board
     .reduce((acc, row) => [...acc, ...row], [])
-    .map((value) => (value === ' ' ? 0 : Number(value)))
+    .map((value) => (value === EMPTY_CELL ? 0 : Number(value)))
 
 const formatOutput = (board: number[], boardSize: BoardSize): BoardModel =>
   arrayToMatrix(
-    board.map((value) => (value === 0 ? ' ' : value.toString())),
+    board.map((value) => (value === 0 ? EMPTY_CELL : value.toString())),
     Number(boardSize)
   )
 

@@ -1,14 +1,13 @@
-import { arrayToMatrix } from '../helpers/arrayToMatrix'
-import { BoardImportCode, BoardModel, BoardSize } from '../typings'
+import { arrayToMatrix } from 'utils/helpers'
+
+import { EMPTY_CELL, POSSIBLE_VALID_INPUTS } from './constants'
+import { BoardImportCode, BoardModel, BoardSize } from './typings'
 
 const formatInputCode = (inputCodeArray: BoardImportCode[], boardSize: BoardSize) => {
-  const possibleValidInputs = {
-    9: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
-    16: ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
-  }
-  const validInputs = possibleValidInputs[boardSize]
+  const validInputs = POSSIBLE_VALID_INPUTS[boardSize]
+
   return inputCodeArray.map((value) =>
-    validInputs.includes(value.toUpperCase()) ? value.toUpperCase() : ' '
+    validInputs.includes(value.toUpperCase()) ? value.toUpperCase() : EMPTY_CELL
   )
 }
 

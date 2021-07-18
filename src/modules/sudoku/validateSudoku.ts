@@ -1,6 +1,7 @@
-import { BoardModel, BoardSize } from '../typings'
+import { EMPTY_CELL, POSSIBLE_MINIMUM_HINTS } from './constants'
+import { BoardModel, BoardModelCompound, BoardSize } from './typings'
 
-const checkLength = (board: BoardModel, requiredBoardLength: number) => {
+const checkLength = (board: BoardModelCompound, requiredBoardLength: number) => {
   const boardLength = board.reduce((acc, row) => acc + row.length, 0)
 
   return boardLength !== requiredBoardLength
@@ -8,11 +9,10 @@ const checkLength = (board: BoardModel, requiredBoardLength: number) => {
     : ''
 }
 
-const checkHints = (board: BoardModel, boardSize: BoardSize) => {
-  const hintsInRow = (row: string[]) => row.filter((x) => x !== ' ').length
+const checkHints = (board: BoardModelCompound, boardSize: BoardSize) => {
+  const hintsInRow = (row: string[]) => row.filter((x) => x !== EMPTY_CELL).length
 
-  const possibleMinimumHints = { 9: 17, 16: 55 }
-  const minHints = possibleMinimumHints[boardSize]
+  const minHints = POSSIBLE_MINIMUM_HINTS[boardSize]
   const hintsInBoard = board.reduce((acc, row) => acc + hintsInRow(row), 0)
 
   return hintsInBoard < minHints

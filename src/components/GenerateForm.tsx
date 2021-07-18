@@ -1,7 +1,8 @@
 import { ChangeEvent, FC, FormEvent, useState } from 'react'
 
+import { BoardDifficulty, BoardSize } from 'modules/sudoku'
+
 import '../styles/Form.css'
-import { BoardDifficulty, BoardSize } from '../typings'
 import RadioFieldset from './RadioFieldset'
 
 interface GenerateFormProps {
@@ -44,16 +45,16 @@ const GenerateForm: FC<GenerateFormProps> = ({ visability, onSubmit, onCancel })
     >
       <div className="radio-container">
         <RadioFieldset
-          name={'boardSize'}
-          title={'Board Size:'}
+          name="boardSize"
+          title="Board Size:"
           formatId={(value) => `generate${value}`}
           values={['9', '16']}
           stateToCheck={boardSize}
           onChange={handleChangeBoardSize}
         />
         <RadioFieldset
-          name={'difficulty'}
-          title={'Difficulty:'}
+          name="difficulty"
+          title="Difficulty:"
           formatId={(value) => value}
           values={['easy', 'medium', 'hard']}
           stateToCheck={difficulty}

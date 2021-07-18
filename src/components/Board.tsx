@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { BoardModel, BoardSize } from '../typings'
+import { BoardModel, BoardSize } from 'modules/sudoku'
 
 interface BoardProps {
   board: BoardModel
@@ -14,7 +14,7 @@ interface CellProps {
 
 const Board: FC<BoardProps> = ({ board, boardSize }) => {
   return (
-    <div className={'board'}>
+    <div className="board">
       {board.map((row, rowIndex) => (
         <div key={rowIndex} className="board-row">
           {row.map((cellValue, columnIndex) => (

@@ -132,6 +132,7 @@ module.exports = {
         }
       }
     ],
-    'react/jsx-newline': [1, { prevent: true }]
+    'react/jsx-newline': [1, { prevent: true }],
+    'react/jsx-curly-brace-presence': ['error', { props: 'never', children: 'never' }]
   }
 }

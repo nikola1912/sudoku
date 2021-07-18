@@ -1,8 +1,8 @@
 import { FC, useState } from 'react'
 
+import { BoardDifficulty, BoardModel, BoardSize, solveSudoku } from 'modules/sudoku'
+
 import '../styles/App.css'
-import { BoardDifficulty, BoardModel, BoardSize } from '../typings'
-import { solveSudoku } from '../util/solveSudoku'
 import Board from './Board'
 import { FooterButtons, HeaderButtons } from './Buttons'
 import ExportForm from './ExportForm'

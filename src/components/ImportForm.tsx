@@ -2,10 +2,16 @@ import { ChangeEvent, FC, FormEvent, useState } from 'react'
 
 import { FiUpload } from 'react-icons/fi'
 
+import {
+  BoardImportCode,
+  BoardImportMode,
+  BoardModel,
+  BoardSize,
+  formatSudoku,
+  validateSudoku
+} from 'modules/sudoku'
+
 import '../styles/Form.css'
-import { BoardImportCode, BoardImportMode, BoardModel, BoardSize } from '../typings'
-import { formatSudoku } from '../util/formatSudoku'
-import { validateSudoku } from '../util/validateSudoku'
 import RadioFieldset from './RadioFieldset'
 
 interface ImportFormProps {
@@ -77,16 +83,16 @@ const ImportForm: FC<ImportFormProps> = ({ visability, onSubmit, onCancel }) => 
       <div className="radio-container">
         <RadioFieldset
           name="boardSize"
-          title={'Board Size:'}
+          title="Board Size:"
           formatId={(value) => `${value}x${value}`}
           values={['9', '16']}
           stateToCheck={boardSize}
           onChange={handleBoardSizeChange}
         />
         <RadioFieldset
-          questionMark={true}
-          name={'inputMode'}
-          title={'Input Mode:'}
+          questionMark
+          name="inputMode"
+          title="Input Mode:"
           formatId={(value) => value}
           values={['code', 'image']}
           stateToCheck={inputMode}
@@ -107,7 +113,7 @@ const ImportForm: FC<ImportFormProps> = ({ visability, onSubmit, onCancel }) => 
             value={inputCode}
             onChange={handleInputCodeChange}
           />
-          <span className={'error-message'}>{errorMessage}</span>
+          <span className="error-message">{errorMessage}</span>
         </div>
       )}
       {inputMode === 'image' && (
@@ -128,7 +134,7 @@ const ImportForm: FC<ImportFormProps> = ({ visability, onSubmit, onCancel }) => 
             capture="camera"
             onChange={handleImageUpload}
           />
-          <span className={'error-message'}>{errorMessage}</span>
+          <span className="error-message">{errorMessage}</span>
         </div>
       )}
       <input type="submit" value="Submit" className="button" />
