@@ -15,8 +15,8 @@ interface CellProps {
 const Board: FC<BoardProps> = ({ board, boardSize }) => {
   return (
     <div className={'board'}>
-      {board.map((row: any[], rowIndex) => (
-        <div className="board-row" key={rowIndex}>
+      {board.map((row, rowIndex) => (
+        <div key={rowIndex} className="board-row">
           {row.map((cellValue, columnIndex) => (
             <Cell
               key={rowIndex * Number(boardSize) + columnIndex}

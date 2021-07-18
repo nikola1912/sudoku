@@ -1,5 +1,5 @@
-import { BoardModel, BoardSize } from '../typings'
 import { arrayToMatrix } from '../helpers/arrayToMatrix'
+import { BoardModel, BoardSize } from '../typings'
 
 const solveBoard = (board: number[], boardSize: number) => {
   const CHUNK_SIZE = Math.sqrt(boardSize)
@@ -33,9 +33,8 @@ const solveBoard = (board: number[], boardSize: number) => {
       ROW_COL_SIZE * (Math.floor(index / ROW_COL_SIZE) % CHUNK_SIZE)
     for (let i = 0; i < ROW_COL_SIZE; i += 1) {
       if (
-        board[
-          start + ROW_COL_SIZE * Math.floor(i / CHUNK_SIZE) + (i % CHUNK_SIZE)
-        ] === number
+        board[start + ROW_COL_SIZE * Math.floor(i / CHUNK_SIZE) + (i % CHUNK_SIZE)] ===
+        number
       ) {
         return false
       }
@@ -77,11 +76,11 @@ const solveBoard = (board: number[], boardSize: number) => {
 const formatInput = (board: BoardModel): number[] =>
   board
     .reduce((acc, row) => [...acc, ...row], [])
-    .map(value => (value === ' ' ? 0 : Number(value)))
+    .map((value) => (value === ' ' ? 0 : Number(value)))
 
 const formatOutput = (board: number[], boardSize: BoardSize): BoardModel =>
   arrayToMatrix(
-    board.map(value => (value === 0 ? ' ' : value.toString())),
+    board.map((value) => (value === 0 ? ' ' : value.toString())),
     Number(boardSize)
   )
 

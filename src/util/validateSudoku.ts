@@ -9,7 +9,7 @@ const checkLength = (board: BoardModel, requiredBoardLength: number) => {
 }
 
 const checkHints = (board: BoardModel, boardSize: BoardSize) => {
-  const hintsInRow = (row: string[]) => row.filter(x => x !== ' ').length
+  const hintsInRow = (row: string[]) => row.filter((x) => x !== ' ').length
 
   const possibleMinimumHints = { 9: 17, 16: 55 }
   const minHints = possibleMinimumHints[boardSize]

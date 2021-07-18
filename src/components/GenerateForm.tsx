@@ -1,8 +1,8 @@
-import { FC, useState, ChangeEvent, FormEvent } from 'react'
+import { ChangeEvent, FC, FormEvent, useState } from 'react'
 
 import '../styles/Form.css'
+import { BoardDifficulty, BoardSize } from '../typings'
 import RadioFieldset from './RadioFieldset'
-import { BoardSize, BoardDifficulty } from '../typings'
 
 interface GenerateFormProps {
   visability: boolean
@@ -10,11 +10,7 @@ interface GenerateFormProps {
   onCancel: () => void
 }
 
-const GenerateForm: FC<GenerateFormProps> = ({
-  visability,
-  onSubmit,
-  onCancel
-}) => {
+const GenerateForm: FC<GenerateFormProps> = ({ visability, onSubmit, onCancel }) => {
   const [boardSize, setBoardSize] = useState<BoardSize>('9')
   const [difficulty, setDifficulty] = useState<BoardDifficulty>('easy')
 
@@ -43,36 +39,29 @@ const GenerateForm: FC<GenerateFormProps> = ({
   return (
     <form
       noValidate
-      onSubmit={handleFormSubmit}
       className={visability ? 'form form-generate' : 'hidden'}
+      onSubmit={handleFormSubmit}
     >
       <div className="radio-container">
         <RadioFieldset
           name={'boardSize'}
           title={'Board Size:'}
-          formatId={value => `generate${value}`}
+          formatId={(value) => `generate${value}`}
           values={['9', '16']}
           stateToCheck={boardSize}
           onChange={handleChangeBoardSize}
         />
-
         <RadioFieldset
           name={'difficulty'}
           title={'Difficulty:'}
-          formatId={value => value}
+          formatId={(value) => value}
           values={['easy', 'medium', 'hard']}
           stateToCheck={difficulty}
           onChange={handleChangeDifficulty}
         />
       </div>
-
       <input type="submit" value="Generate" className="button" />
-      <input
-        type="button"
-        value="Cancel"
-        className="button"
-        onClick={handleFormCancel}
-      />
+      <input type="button" value="Cancel" className="button" onClick={handleFormCancel} />
     </form>
   )
 }

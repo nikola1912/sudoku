@@ -1,4 +1,4 @@
-import { FC, ChangeEvent } from 'react'
+import { ChangeEvent, FC } from 'react'
 
 interface RadioFieldsetProps {
   name: string
@@ -20,32 +20,34 @@ const RadioFieldset: FC<RadioFieldsetProps> = ({
   formatId,
   stateToCheck,
   onChange
-}) => (
-  <fieldset className={`radio-${name}`}>
-    <legend>
-      {questionMark && <span className="questionMark">?</span>}
-      {title}
-    </legend>
-    {values.map(value => (
-      <span key={value}>
-        <input
-          // TODO: Test if this is boolean or string
-          disabled={disabled}
-          type="radio"
-          name={name}
-          id={formatId(value)}
-          value={value}
-          checked={stateToCheck === value}
-          onChange={event => onChange(event)}
-        />
-        <label htmlFor={formatId(value)}>
-          {name === 'boardSize'
-            ? `${value}x${value}`
-            : `${value[0].toUpperCase()}${value.slice(1)}`}
-        </label>
-      </span>
-    ))}
-  </fieldset>
-)
+}) => {
+  return (
+    <fieldset className={`radio-${name}`}>
+      <legend>
+        {questionMark && <span className="questionMark">?</span>}
+        {title}
+      </legend>
+      {values.map((value) => (
+        <span key={value}>
+          <input
+            // TODO: Test if this is boolean or string
+            disabled={disabled}
+            type="radio"
+            name={name}
+            id={formatId(value)}
+            value={value}
+            checked={stateToCheck === value}
+            onChange={(event) => onChange(event)}
+          />
+          <label htmlFor={formatId(value)}>
+            {name === 'boardSize'
+              ? `${value}x${value}`
+              : `${value[0].toUpperCase()}${value.slice(1)}`}
+          </label>
+        </span>
+      ))}
+    </fieldset>
+  )
+}
 
 export default RadioFieldset

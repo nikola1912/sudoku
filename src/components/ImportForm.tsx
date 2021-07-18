@@ -1,16 +1,12 @@
-import { useState, FC, FormEvent, ChangeEvent } from 'react'
+import { ChangeEvent, FC, FormEvent, useState } from 'react'
+
 import { FiUpload } from 'react-icons/fi'
 
 import '../styles/Form.css'
-import RadioFieldset from './RadioFieldset'
-import { validateSudoku } from '../util/validateSudoku'
+import { BoardImportCode, BoardImportMode, BoardModel, BoardSize } from '../typings'
 import { formatSudoku } from '../util/formatSudoku'
-import {
-  BoardModel,
-  BoardSize,
-  BoardImportMode,
-  BoardImportCode
-} from '../typings'
+import { validateSudoku } from '../util/validateSudoku'
+import RadioFieldset from './RadioFieldset'
 
 interface ImportFormProps {
   visability: boolean
@@ -18,11 +14,7 @@ interface ImportFormProps {
   onCancel: () => void
 }
 
-const ImportForm: FC<ImportFormProps> = ({
-  visability,
-  onSubmit,
-  onCancel
-}) => {
+const ImportForm: FC<ImportFormProps> = ({ visability, onSubmit, onCancel }) => {
   const [boardSize, setBoardSize] = useState<BoardSize>('9')
   const [inputMode, setInputMode] = useState<BoardImportMode>('code')
   const [inputCode, setInputCode] = useState<BoardImportCode>('')
@@ -78,39 +70,38 @@ const ImportForm: FC<ImportFormProps> = ({
   return (
     <form
       noValidate
+      className={visability ? 'form form-import' : 'hidden'}
       onChange={hideErrorMessage}
       onSubmit={handleFormSubmit}
-      className={visability ? 'form form-import' : 'hidden'}
     >
       <div className="radio-container">
         <RadioFieldset
           name="boardSize"
           title={'Board Size:'}
-          formatId={value => `${value}x${value}`}
+          formatId={(value) => `${value}x${value}`}
           values={['9', '16']}
           stateToCheck={boardSize}
           onChange={handleBoardSizeChange}
         />
-
         <RadioFieldset
           questionMark={true}
           name={'inputMode'}
           title={'Input Mode:'}
-          formatId={value => value}
+          formatId={(value) => value}
           values={['code', 'image']}
           stateToCheck={inputMode}
           onChange={handleInputModeChange}
         />
       </div>
-
       {inputMode === 'code' && (
         <div className="input-code-container">
-          <label>
+          <label htmlFor="input-code">
             <span className="questionMark">?</span>
             Sudoku Code:
           </label>
           <input
             required
+            id="input-code"
             type="text"
             name="inputCode"
             value={inputCode}
@@ -119,7 +110,6 @@ const ImportForm: FC<ImportFormProps> = ({
           <span className={'error-message'}>{errorMessage}</span>
         </div>
       )}
-
       {inputMode === 'image' && (
         <div className="image-upload-container">
           <span className="image-upload-label">
@@ -141,14 +131,8 @@ const ImportForm: FC<ImportFormProps> = ({
           <span className={'error-message'}>{errorMessage}</span>
         </div>
       )}
-
       <input type="submit" value="Submit" className="button" />
-      <input
-        type="button"
-        value="Cancel"
-        className="button"
-        onClick={handleFormCancel}
-      />
+      <input type="button" value="Cancel" className="button" onClick={handleFormCancel} />
     </form>
   )
 }

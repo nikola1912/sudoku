@@ -1,13 +1,13 @@
-import { useState, FC } from 'react'
+import { FC, useState } from 'react'
 
 import '../styles/App.css'
+import { BoardDifficulty, BoardModel, BoardSize } from '../typings'
+import { solveSudoku } from '../util/solveSudoku'
 import Board from './Board'
-import ImportForm from './ImportForm'
+import { FooterButtons, HeaderButtons } from './Buttons'
 import ExportForm from './ExportForm'
 import GenerateForm from './GenerateForm'
-import { HeaderButtons, FooterButtons } from './Buttons'
-import { solveSudoku } from '../util/solveSudoku'
-import { BoardModel, BoardSize, BoardDifficulty } from '../typings'
+import ImportForm from './ImportForm'
 
 /* const generateGrid = size => {
   const grid = []
@@ -47,10 +47,7 @@ const App: FC = () => {
     setBoardSize(boardSize)
   }
 
-  const handleGenerateSubmit = (
-    boardSize: BoardSize,
-    difficulty: BoardDifficulty
-  ) => {
+  const handleGenerateSubmit = (boardSize: BoardSize, difficulty: BoardDifficulty) => {
     console.log(`Board size: ${boardSize} | Difficulty: ${difficulty}`)
   }
 
@@ -89,29 +86,27 @@ const App: FC = () => {
       <div className="header-container">
         <HeaderButtons onSolve={handleSolve} onRestart={handleRestart} />
       </div>
-
       <div className="board-container">
         <Board board={board} boardSize={boardSize} />
       </div>
-
       <div className="footer-container">
         <FooterButtons
+          visability={buttonsVisability}
           onImport={displayImportForm}
           onExport={displayExportForm}
           onGenerate={displayGenerateForm}
-          visability={buttonsVisability}
         />
         <ImportForm
+          visability={importVisability}
           onSubmit={handleImportSubmit}
           onCancel={handleCancel}
-          visability={importVisability}
         />
         <GenerateForm
+          visability={generateVisability}
           onSubmit={handleGenerateSubmit}
           onCancel={handleCancel}
-          visability={generateVisability}
         />
-        <ExportForm onCancel={handleCancel} visability={exportVisability} />
+        <ExportForm visability={exportVisability} onCancel={handleCancel} />
       </div>
     </div>
   )
