@@ -11,8 +11,8 @@ import {
   validateSudoku
 } from 'modules/sudoku'
 
-import '../styles/Form.css'
-import RadioFieldset from './RadioFieldset'
+import '../../styles/Form.css'
+import RadioFieldset from '../RadioFieldset'
 
 interface ImportFormProps {
   visability: boolean

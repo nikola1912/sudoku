@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { BoardModel, BoardSize } from 'modules/sudoku'
 
-import Cell from './Cell'
+import Cell from '../Cell'
 
 interface BoardProps {
   board: BoardModel
