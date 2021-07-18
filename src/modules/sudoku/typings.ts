@@ -24,6 +24,7 @@ type Cell16x16 =
 type Board9x9 = Tuple<Tuple<Cell9x9, 9>, 9>
 type Board16x16 = Tuple<Tuple<Cell16x16, 16>, 16>
 
+export type CellModel = Cell9x9 | Cell16x16
 export type BoardModel = Board9x9 | Board16x16
 // Higher order methods trigger error `ts(2349)` when used on `BoardModel` arrays.
 // `BoardModelCompound` allows use of higher order methods on arrays.

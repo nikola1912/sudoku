@@ -4,7 +4,7 @@ import { BoardDifficulty, BoardModel, BoardSize, solveSudoku } from 'modules/sud
 
 import '../styles/App.css'
 import Board from './Board'
-import { FooterButtons, HeaderButtons } from './Buttons'
+import Button from './Button'
 import ExportForm from './ExportForm'
 import GenerateForm from './GenerateForm'
 import ImportForm from './ImportForm'
@@ -84,18 +84,20 @@ const App: FC = () => {
   return (
     <div className="game">
       <div className="header-container">
-        <HeaderButtons onSolve={handleSolve} onRestart={handleRestart} />
+        <div className="buttons-container">
+          <Button onClick={handleSolve}>Solve</Button>
+          <Button onClick={handleRestart}>Restart</Button>
+        </div>
       </div>
       <div className="board-container">
         <Board board={board} boardSize={boardSize} />
       </div>
       <div className="footer-container">
-        <FooterButtons
-          visability={buttonsVisability}
-          onImport={displayImportForm}
-          onExport={displayExportForm}
-          onGenerate={displayGenerateForm}
-        />
+        <div className={buttonsVisability ? 'buttons-container' : 'hidden'}>
+          <Button onClick={displayImportForm}>Import</Button>
+          <Button onClick={displayGenerateForm}>Generate</Button>
+          <Button onClick={displayExportForm}>Export</Button>
+        </div>
         <ImportForm
           visability={importVisability}
           onSubmit={handleImportSubmit}

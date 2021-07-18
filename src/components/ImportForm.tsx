@@ -125,7 +125,6 @@ const ImportForm: FC<ImportFormProps> = ({ visability, onSubmit, onCancel }) => 
             <FiUpload /> <span>Upload</span>
           </label>
           <input
-            // TODO: Test if this is boolean or string
             hidden
             id="image-upload"
             name="inputImage"
