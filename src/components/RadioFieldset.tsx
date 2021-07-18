@@ -1,12 +1,23 @@
-import PropTypes from 'prop-types'
+import { FC, ChangeEvent } from 'react'
 
-const RadioFieldset = ({
+interface RadioFieldsetProps {
+  name: string
+  questionMark?: boolean
+  title: string
+  values: string[]
+  disabled?: boolean
+  formatId: (value: string) => string
+  stateToCheck: string
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void
+}
+
+const RadioFieldset: FC<RadioFieldsetProps> = ({
   name,
-  questionMark,
+  questionMark = false,
   title,
   values,
-  disabled,
-  formatID,
+  disabled = false,
+  formatId,
   stateToCheck,
   onChange
 }) => (
@@ -18,15 +29,16 @@ const RadioFieldset = ({
     {values.map(value => (
       <span key={value}>
         <input
-          disabled={disabled && 'disabled'}
+          // TODO: Test if this is boolean or string
+          disabled={disabled}
           type="radio"
           name={name}
-          id={formatID(value)}
+          id={formatId(value)}
           value={value}
           checked={stateToCheck === value}
           onChange={event => onChange(event)}
         />
-        <label htmlFor={formatID(value)}>
+        <label htmlFor={formatId(value)}>
           {name === 'boardSize'
             ? `${value}x${value}`
             : `${value[0].toUpperCase()}${value.slice(1)}`}
@@ -35,16 +47,5 @@ const RadioFieldset = ({
     ))}
   </fieldset>
 )
-
-RadioFieldset.propTypes = {
-  name: PropTypes.string,
-  questionMark: PropTypes.bool,
-  title: PropTypes.string,
-  values: PropTypes.arrayOf(PropTypes.string),
-  disabled: PropTypes.bool,
-  formatID: PropTypes.func,
-  stateToCheck: PropTypes.string,
-  onChange: PropTypes.func
-}
 
 export default RadioFieldset

@@ -1,34 +1,63 @@
-import { useState } from 'react'
-import PropTypes from 'prop-types'
+import { useState, FC, FormEvent, ChangeEvent } from 'react'
 import { FiUpload } from 'react-icons/fi'
 
 import '../styles/Form.css'
-import RadioFieldset from './RadioFieldset.jsx'
-import validateSudoku from '../util/validateSudoku.js'
-import formatSudoku from '../util/formatSudoku.js'
+import RadioFieldset from './RadioFieldset'
+import { validateSudoku } from '../util/validateSudoku'
+import { formatSudoku } from '../util/formatSudoku'
+import {
+  BoardModel,
+  BoardSize,
+  BoardImportMode,
+  BoardImportCode
+} from '../typings'
 
-const ImportForm = ({ onSubmit, onCancel, visability }) => {
-  const [boardSize, setBoardSize] = useState('9')
-  const [inputMode, setInputMode] = useState('code')
-  const [inputCode, setInputCode] = useState('')
+interface ImportFormProps {
+  visability: boolean
+  onSubmit: (board: BoardModel, boardSize: BoardSize) => void
+  onCancel: () => void
+}
+
+const ImportForm: FC<ImportFormProps> = ({
+  visability,
+  onSubmit,
+  onCancel
+}) => {
+  const [boardSize, setBoardSize] = useState<BoardSize>('9')
+  const [inputMode, setInputMode] = useState<BoardImportMode>('code')
+  const [inputCode, setInputCode] = useState<BoardImportCode>('')
   const [errorMessage, setErrorMessage] = useState('')
 
-  const handleInputModeChange = inputMode => {
+  const handleInputModeChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const inputMode = event.target.value as BoardImportMode
     setInputCode('')
     setInputMode(inputMode)
   }
-  const handleImageUpload = async image => {
+
+  const handleImageUpload = async (event: ChangeEvent<HTMLInputElement>) => {
+    const image = (event.target.files as FileList)[0]
     const formData = new FormData()
     formData.append('image', image)
     const response = await fetch('/scanner', { method: 'POST', body: formData })
     const data = await response.json()
     console.log(data)
   }
-  const handleInputCodeChange = inputCode => setInputCode(inputCode)
-  const handleBoardSizeChange = boardSize => setBoardSize(boardSize)
-  const hideErrorMessage = () => setErrorMessage('')
 
-  const handleFormSubmit = event => {
+  const handleInputCodeChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const inputCode = event.target.value as BoardImportCode
+    setInputCode(inputCode)
+  }
+
+  const handleBoardSizeChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const boardSize = event.target.value as BoardSize
+    setBoardSize(boardSize)
+  }
+
+  const hideErrorMessage = () => {
+    setErrorMessage('')
+  }
+
+  const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const board = formatSudoku(inputCode, boardSize)
     const newErrorMessage = validateSudoku(board, boardSize)
@@ -57,20 +86,20 @@ const ImportForm = ({ onSubmit, onCancel, visability }) => {
         <RadioFieldset
           name="boardSize"
           title={'Board Size:'}
-          formatID={value => `${value}x${value}`}
+          formatId={value => `${value}x${value}`}
           values={['9', '16']}
           stateToCheck={boardSize}
-          onChange={event => handleBoardSizeChange(event.target.value)}
+          onChange={handleBoardSizeChange}
         />
 
         <RadioFieldset
           questionMark={true}
           name={'inputMode'}
           title={'Input Mode:'}
-          formatID={value => value}
+          formatId={value => value}
           values={['code', 'image']}
           stateToCheck={inputMode}
-          onChange={event => handleInputModeChange(event.target.value)}
+          onChange={handleInputModeChange}
         />
       </div>
 
@@ -85,7 +114,7 @@ const ImportForm = ({ onSubmit, onCancel, visability }) => {
             type="text"
             name="inputCode"
             value={inputCode}
-            onChange={event => handleInputCodeChange(event.target.value)}
+            onChange={handleInputCodeChange}
           />
           <span className={'error-message'}>{errorMessage}</span>
         </div>
@@ -100,13 +129,14 @@ const ImportForm = ({ onSubmit, onCancel, visability }) => {
             <FiUpload /> <span>Upload</span>
           </label>
           <input
-            hidden="hidden"
+            // TODO: Test if this is boolean or string
+            hidden
             id="image-upload"
             name="inputImage"
             type="file"
             accept="image/*"
             capture="camera"
-            onChange={event => handleImageUpload(event.target.files[0])}
+            onChange={handleImageUpload}
           />
           <span className={'error-message'}>{errorMessage}</span>
         </div>
@@ -121,12 +151,6 @@ const ImportForm = ({ onSubmit, onCancel, visability }) => {
       />
     </form>
   )
-}
-
-ImportForm.propTypes = {
-  onSubmit: PropTypes.func,
-  onCancel: PropTypes.func,
-  visability: PropTypes.bool
 }
 
 export default ImportForm

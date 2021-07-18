@@ -1,12 +1,13 @@
-import { useState } from 'react'
-import '../styles/App.css'
+import { useState, FC } from 'react'
 
-import Board from './Board.jsx'
-import ImportForm from './ImportForm.jsx'
-import ExportForm from './ExportForm.jsx'
-import GenerateForm from './GenerateForm.jsx'
-import { HeaderButtons, FooterButtons } from './Buttons.jsx'
-import sudokuSolver from '../util/solveSudoku.js'
+import '../styles/App.css'
+import Board from './Board'
+import ImportForm from './ImportForm'
+import ExportForm from './ExportForm'
+import GenerateForm from './GenerateForm'
+import { HeaderButtons, FooterButtons } from './Buttons'
+import { solveSudoku } from '../util/solveSudoku'
+import { BoardModel, BoardSize, BoardDifficulty } from '../typings'
 
 /* const generateGrid = size => {
   const grid = []
@@ -22,9 +23,9 @@ import sudokuSolver from '../util/solveSudoku.js'
   return grid
 } */
 
-const App = () => {
-  const [boardSize, setBoardSize] = useState('9')
-  const [board, setBoard] = useState([
+const App: FC = () => {
+  const [boardSize, setBoardSize] = useState<BoardSize>('9')
+  const [board, setBoard] = useState<BoardModel>([
     [' ', '3', ' ', ' ', ' ', ' ', ' ', '5', ' '],
     [' ', ' ', '8', ' ', '9', '1', '3', ' ', ' '],
     ['6', ' ', ' ', '4', ' ', ' ', '7', ' ', ' '],
@@ -41,12 +42,15 @@ const App = () => {
   const [generateVisability, setGenerateVisability] = useState(false)
   const [exportVisability, setExportVisability] = useState(false)
 
-  const handleImportSubmit = (board, boardSize) => {
+  const handleImportSubmit = (board: BoardModel, boardSize: BoardSize) => {
     setBoard(board)
     setBoardSize(boardSize)
   }
 
-  const handleGenerateSubmit = (boardSize, difficulty) => {
+  const handleGenerateSubmit = (
+    boardSize: BoardSize,
+    difficulty: BoardDifficulty
+  ) => {
     console.log(`Board size: ${boardSize} | Difficulty: ${difficulty}`)
   }
 
@@ -73,16 +77,17 @@ const App = () => {
   }
 
   const handleSolve = () => {
-    setBoard(sudokuSolver(board, boardSize))
+    setBoard(solveSudoku(board, boardSize))
+  }
+
+  const handleRestart = () => {
+    // TODO
   }
 
   return (
     <div className="game">
       <div className="header-container">
-        <HeaderButtons
-          onSolve={handleSolve}
-          // onReset={handleReset} TODO
-        />
+        <HeaderButtons onSolve={handleSolve} onRestart={handleRestart} />
       </div>
 
       <div className="board-container">
