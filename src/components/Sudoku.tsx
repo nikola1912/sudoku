@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 
 import { BoardDifficulty, BoardModel, BoardSize, solveSudoku } from 'modules/sudoku'
 
-import '../styles/App.css'
+import '../styles/Sudoku.css'
 import Board from './Board'
 import Button from './Button'
 import ExportForm from './ExportForm'
@@ -23,7 +23,7 @@ import ImportForm from './ImportForm'
   return grid
 } */
 
-const App: FC = () => {
+const Sudoku: FC = () => {
   const [boardSize, setBoardSize] = useState<BoardSize>('9')
   const [board, setBoard] = useState<BoardModel>([
     [' ', '3', ' ', ' ', ' ', ' ', ' ', '5', ' '],
@@ -114,4 +114,4 @@ const App: FC = () => {
   )
 }
 
-export default App
+export default Sudoku
