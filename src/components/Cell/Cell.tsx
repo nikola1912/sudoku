@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
+import { cnb } from 'cnbuilder'
+
 import { BoardSize, CellModel } from 'modules/sudoku'
 
 interface CellProps {
@@ -8,7 +10,7 @@ interface CellProps {
 }
 
 const Cell: FC<CellProps> = ({ boardSize, value }) => {
-  return <div className={`board-cell board-cell-size${boardSize}`}>{value}</div>
+  return <div className={cnb('board-cell', `board-cell-size${boardSize}`)}>{value}</div>
 }
 
 export default Cell
