@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { cnb } from 'cnbuilder'
 
-import { BoardSize, CellModel } from 'modules/sudoku'
+import { BoardSize, CellModel } from '@/modules/sudoku'
 
 interface CellProps {
   boardSize: BoardSize

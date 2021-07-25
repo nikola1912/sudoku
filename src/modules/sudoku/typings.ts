@@ -1,4 +1,4 @@
-import { Tuple } from 'utils/typings'
+import { Tuple } from '@/utils/typings'
 
 import { EMPTY_CELL } from './constants'
 

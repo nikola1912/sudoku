@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, FormEvent, useState } from 'react'
 
-import { BoardDifficulty, BoardSize } from 'modules/sudoku'
+import { BoardDifficulty, BoardSize } from '@/modules/sudoku'
 
 import '../../styles/Form.css'
 import RadioFieldset from '../RadioFieldset'

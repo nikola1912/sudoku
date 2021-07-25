@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 
-import { BoardDifficulty, BoardModel, BoardSize, solveSudoku } from 'modules/sudoku'
+import { BoardDifficulty, BoardModel, BoardSize, solveSudoku } from '@/modules/sudoku'
 
 import '../../styles/Sudoku.css'
 import Board from '../Board'

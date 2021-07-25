@@ -9,7 +9,7 @@ import {
   BoardSize,
   formatSudoku,
   validateSudoku
-} from 'modules/sudoku'
+} from '@/modules/sudoku'
 
 import '../../styles/Form.css'
 import RadioFieldset from '../RadioFieldset'

@@ -60,23 +60,7 @@ module.exports = {
             position: 'before'
           },
           {
-            pattern: 'components/**',
-            group: 'internal'
-          },
-          {
-            pattern: 'utils/**',
-            group: 'internal'
-          },
-          {
-            pattern: 'configs/**',
-            group: 'internal'
-          },
-          {
-            pattern: 'localization/**',
-            group: 'internal'
-          },
-          {
-            pattern: 'modules/**',
+            pattern: '@/**',
             group: 'internal'
           }
         ],
@@ -103,6 +87,7 @@ module.exports = {
     '@typescript-eslint/no-empty-interface': 1,
     '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/explicit-module-boundary-types': 0,
+    '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/member-ordering': [
       'warn',
       {

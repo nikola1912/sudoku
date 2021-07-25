@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { BoardModel, BoardSize } from 'modules/sudoku'
+import { BoardModel, BoardSize } from '@/modules/sudoku'
 
 import Cell from '../Cell'
 
