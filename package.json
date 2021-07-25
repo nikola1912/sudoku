@@ -10,7 +10,8 @@
     "eslint:check": "eslint \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "eslint:fix": "eslint \"**/*.{js,jsx,ts,tsx,json,md}\" --fix",
     "prettier:check": "prettier \"**/*.{js,jsx,ts,tsx,json,md}\" --list-different",
-    "prettier:fix": "prettier \"**/*.{js,jsx,ts,tsx,json,md}\" --write"
+    "prettier:fix": "prettier \"**/*.{js,jsx,ts,tsx,json,md}\" --write",
+    "prepare": "./scripts/prepare.sh"
   },
   "dependencies": {
     "@craco/craco": "^6.2.0",
@@ -47,6 +48,7 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-testing-library": "^3.10.2",
+    "husky": "^7.0.0",
     "postcss": "^7.0.36",
     "prettier": "^2.3.2",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.6"
