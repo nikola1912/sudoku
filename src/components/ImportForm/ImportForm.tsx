@@ -2,6 +2,7 @@ import { ChangeEvent, FC, FormEvent, useState } from 'react'
 
 import { FiUpload } from 'react-icons/fi'
 
+import { scanSudoku } from '@/api'
 import {
   BoardImportCode,
   BoardImportMode,
@@ -34,10 +35,7 @@ export const ImportForm: FC<ImportFormProps> = ({ visability, onSubmit, onCancel
 
   const handleImageUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const image = (event.target.files as FileList)[0]
-    const formData = new FormData()
-    formData.append('image', image)
-    const response = await fetch('/scanner', { method: 'POST', body: formData })
-    const data = await response.json()
+    const data = await scanSudoku(image)
     console.log(data)
   }
 

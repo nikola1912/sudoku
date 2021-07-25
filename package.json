@@ -11,10 +11,12 @@
     "eslint:fix": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix",
     "prettier:check": "prettier \"**/*.{js,jsx,ts,tsx,json,md}\" --list-different",
     "prettier:fix": "prettier \"**/*.{js,jsx,ts,tsx,json,md}\" --write",
+    "create-env": "cp .env.example .env",
     "prepare": "./scripts/prepare.sh"
   },
   "dependencies": {
     "@craco/craco": "^6.2.0",
+    "axios": "^0.21.1",
     "cnbuilder": "^3.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
