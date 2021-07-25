@@ -72,6 +72,7 @@ module.exports = {
         }
       }
     ],
+    'no-restricted-imports': ['error', { patterns: ['@/*/*/*'] }],
     'space-before-blocks': 'error',
     'spaced-comment': ['error', 'always'],
     'object-shorthand': [
