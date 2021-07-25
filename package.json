@@ -6,7 +6,11 @@
     "start": "TAILWIND_MODE=watch craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "eslint:check": "eslint \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "eslint:fix": "eslint \"**/*.{js,jsx,ts,tsx,json,md}\" --fix",
+    "prettier:check": "prettier \"**/*.{js,jsx,ts,tsx,json,md}\" --list-different",
+    "prettier:fix": "prettier \"**/*.{js,jsx,ts,tsx,json,md}\" --write"
   },
   "dependencies": {
     "@craco/craco": "^6.2.0",
