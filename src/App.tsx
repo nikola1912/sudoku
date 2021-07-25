@@ -1,9 +1,7 @@
 import { FC } from 'react'
 
-import Sudoku from '@/components/Sudoku'
+import { Sudoku } from '@/components/Sudoku'
 
-const App: FC = () => {
+export const App: FC = () => {
   return <Sudoku />
 }
-
-export default App

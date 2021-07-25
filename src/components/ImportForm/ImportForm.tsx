@@ -12,15 +12,15 @@ import {
 } from '@/modules/sudoku'
 
 import '../../styles/Form.css'
-import RadioFieldset from '../RadioFieldset'
+import { RadioFieldset } from '../RadioFieldset'
 
-interface ImportFormProps {
+export interface ImportFormProps {
   visability: boolean
   onSubmit: (board: BoardModel, boardSize: BoardSize) => void
   onCancel: () => void
 }
 
-const ImportForm: FC<ImportFormProps> = ({ visability, onSubmit, onCancel }) => {
+export const ImportForm: FC<ImportFormProps> = ({ visability, onSubmit, onCancel }) => {
   const [boardSize, setBoardSize] = useState<BoardSize>('9')
   const [inputMode, setInputMode] = useState<BoardImportMode>('code')
   const [inputCode, setInputCode] = useState<BoardImportCode>('')
@@ -141,5 +141,3 @@ const ImportForm: FC<ImportFormProps> = ({ visability, onSubmit, onCancel }) => 
     </form>
   )
 }
-
-export default ImportForm

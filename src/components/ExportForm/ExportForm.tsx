@@ -1,11 +1,11 @@
 import { FC } from 'react'
 
-interface ExportFormProps {
+export interface ExportFormProps {
   visability: boolean
   onCancel: () => void
 }
 
-const ExportForm: FC<ExportFormProps> = ({ visability, onCancel }) => {
+export const ExportForm: FC<ExportFormProps> = ({ visability, onCancel }) => {
   return (
     <div className={visability ? 'form form-export' : 'hidden'}>
       <button className="button" onClick={onCancel}>
@@ -14,5 +14,3 @@ const ExportForm: FC<ExportFormProps> = ({ visability, onCancel }) => {
     </div>
   )
 }
-
-export default ExportForm

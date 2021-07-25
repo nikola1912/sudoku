@@ -1,1 +1,1 @@
-export { default } from './GenerateForm'
+export * from './GenerateForm'

@@ -1,6 +1,6 @@
 import { ChangeEvent, FC } from 'react'
 
-interface RadioFieldsetProps {
+export interface RadioFieldsetProps {
   name: string
   questionMark?: boolean
   title: string
@@ -11,7 +11,7 @@ interface RadioFieldsetProps {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
-const RadioFieldset: FC<RadioFieldsetProps> = ({
+export const RadioFieldset: FC<RadioFieldsetProps> = ({
   name,
   questionMark = false,
   title,
@@ -49,5 +49,3 @@ const RadioFieldset: FC<RadioFieldsetProps> = ({
     </fieldset>
   )
 }
-
-export default RadioFieldset

@@ -2,14 +2,14 @@ import { FC } from 'react'
 
 import { BoardModel, BoardSize } from '@/modules/sudoku'
 
-import Cell from '../Cell'
+import { Cell } from '../Cell'
 
-interface BoardProps {
+export interface BoardProps {
   board: BoardModel
   boardSize: BoardSize
 }
 
-const Board: FC<BoardProps> = ({ board, boardSize }) => {
+export const Board: FC<BoardProps> = ({ board, boardSize }) => {
   return (
     <div className="board">
       {board.map((row, rowIndex) => (
@@ -26,5 +26,3 @@ const Board: FC<BoardProps> = ({ board, boardSize }) => {
     </div>
   )
 }
-
-export default Board

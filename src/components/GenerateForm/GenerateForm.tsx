@@ -3,15 +3,19 @@ import { ChangeEvent, FC, FormEvent, useState } from 'react'
 import { BoardDifficulty, BoardSize } from '@/modules/sudoku'
 
 import '../../styles/Form.css'
-import RadioFieldset from '../RadioFieldset'
+import { RadioFieldset } from '../RadioFieldset'
 
-interface GenerateFormProps {
+export interface GenerateFormProps {
   visability: boolean
   onSubmit: (boardSize: BoardSize, difficulty: BoardDifficulty) => void
   onCancel: () => void
 }
 
-const GenerateForm: FC<GenerateFormProps> = ({ visability, onSubmit, onCancel }) => {
+export const GenerateForm: FC<GenerateFormProps> = ({
+  visability,
+  onSubmit,
+  onCancel
+}) => {
   const [boardSize, setBoardSize] = useState<BoardSize>('9')
   const [difficulty, setDifficulty] = useState<BoardDifficulty>('easy')
 
@@ -66,5 +70,3 @@ const GenerateForm: FC<GenerateFormProps> = ({ visability, onSubmit, onCancel })
     </form>
   )
 }
-
-export default GenerateForm

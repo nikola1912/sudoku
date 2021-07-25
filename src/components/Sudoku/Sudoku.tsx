@@ -3,11 +3,11 @@ import { FC, useState } from 'react'
 import { BoardDifficulty, BoardModel, BoardSize, solveSudoku } from '@/modules/sudoku'
 
 import '../../styles/Sudoku.css'
-import Board from '../Board'
-import Button from '../Button'
-import ExportForm from '../ExportForm'
-import GenerateForm from '../GenerateForm'
-import ImportForm from '../ImportForm'
+import { Board } from '../Board'
+import { Button } from '../Button'
+import { ExportForm } from '../ExportForm'
+import { GenerateForm } from '../GenerateForm'
+import { ImportForm } from '../ImportForm'
 
 /* const generateGrid = size => {
   const grid = []
@@ -23,7 +23,7 @@ import ImportForm from '../ImportForm'
   return grid
 } */
 
-const Sudoku: FC = () => {
+export const Sudoku: FC = () => {
   const [boardSize, setBoardSize] = useState<BoardSize>('9')
   const [board, setBoard] = useState<BoardModel>([
     [' ', '3', ' ', ' ', ' ', ' ', ' ', '5', ' '],
@@ -113,5 +113,3 @@ const Sudoku: FC = () => {
     </div>
   )
 }
-
-export default Sudoku
