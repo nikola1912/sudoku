@@ -7,8 +7,8 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "eslint:check": "eslint \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "eslint:fix": "eslint \"**/*.{js,jsx,ts,tsx,json,md}\" --fix",
+    "eslint:check": "eslint \"**/*.{js,jsx,ts,tsx}\"",
+    "eslint:fix": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix",
     "prettier:check": "prettier \"**/*.{js,jsx,ts,tsx,json,md}\" --list-different",
     "prettier:fix": "prettier \"**/*.{js,jsx,ts,tsx,json,md}\" --write",
     "prepare": "./scripts/prepare.sh"
