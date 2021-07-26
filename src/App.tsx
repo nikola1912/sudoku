@@ -2,6 +2,7 @@ import { FC, Suspense } from 'react'
 
 import { ErrorBoundary } from 'react-error-boundary'
 
+import { initMocks } from '@/api'
 import { Button } from '@/components/Button'
 import { Spinner } from '@/components/Spinner'
 import { Sudoku } from '@/components/Sudoku'
@@ -22,6 +23,8 @@ const ErrorFallback = () => {
     </div>
   )
 }
+
+initMocks()
 
 const App: FC = () => {
   return (

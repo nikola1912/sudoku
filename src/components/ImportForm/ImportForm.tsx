@@ -35,8 +35,13 @@ const ImportForm: FC<ImportFormProps> = ({ visability, onSubmit, onCancel }) => 
 
   const handleImageUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const image = (event.target.files as FileList)[0]
-    const data = await scanSudoku(image)
-    console.log(data)
+    // TODO: Implement `scanSudoku` hook
+    try {
+      const data = await scanSudoku(image)
+      console.log(data)
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   const handleInputCodeChange = (event: ChangeEvent<HTMLInputElement>) => {
