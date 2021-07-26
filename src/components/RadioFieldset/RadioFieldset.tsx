@@ -11,7 +11,7 @@ export interface RadioFieldsetProps {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
-export const RadioFieldset: FC<RadioFieldsetProps> = ({
+const RadioFieldset: FC<RadioFieldsetProps> = ({
   name,
   questionMark = false,
   title,
@@ -49,3 +49,5 @@ export const RadioFieldset: FC<RadioFieldsetProps> = ({
     </fieldset>
   )
 }
+
+export { RadioFieldset }

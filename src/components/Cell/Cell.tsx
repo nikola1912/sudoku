@@ -9,6 +9,8 @@ export interface CellProps {
   value: CellModel
 }
 
-export const Cell: FC<CellProps> = ({ boardSize, value }) => {
+const Cell: FC<CellProps> = ({ boardSize, value }) => {
   return <div className={cnb('board-cell', `board-cell-size${boardSize}`)}>{value}</div>
 }
+
+export { Cell }

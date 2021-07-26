@@ -11,11 +11,7 @@ export interface GenerateFormProps {
   onCancel: () => void
 }
 
-export const GenerateForm: FC<GenerateFormProps> = ({
-  visability,
-  onSubmit,
-  onCancel
-}) => {
+const GenerateForm: FC<GenerateFormProps> = ({ visability, onSubmit, onCancel }) => {
   const [boardSize, setBoardSize] = useState<BoardSize>('9')
   const [difficulty, setDifficulty] = useState<BoardDifficulty>('easy')
 
@@ -70,3 +66,5 @@ export const GenerateForm: FC<GenerateFormProps> = ({
     </form>
   )
 }
+
+export { GenerateForm }

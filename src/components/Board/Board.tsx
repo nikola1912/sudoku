@@ -9,7 +9,7 @@ export interface BoardProps {
   boardSize: BoardSize
 }
 
-export const Board: FC<BoardProps> = ({ board, boardSize }) => {
+const Board: FC<BoardProps> = ({ board, boardSize }) => {
   return (
     <div className="board">
       {board.map((row, rowIndex) => (
@@ -26,3 +26,5 @@ export const Board: FC<BoardProps> = ({ board, boardSize }) => {
     </div>
   )
 }
+
+export { Board }

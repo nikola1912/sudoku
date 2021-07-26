@@ -23,7 +23,7 @@ import { ImportForm } from '../ImportForm'
   return grid
 } */
 
-export const Sudoku: FC = () => {
+const Sudoku: FC = () => {
   const [boardSize, setBoardSize] = useState<BoardSize>('9')
   const [board, setBoard] = useState<BoardModel>([
     [' ', '3', ' ', ' ', ' ', ' ', ' ', '5', ' '],
@@ -113,3 +113,5 @@ export const Sudoku: FC = () => {
     </div>
   )
 }
+
+export { Sudoku }

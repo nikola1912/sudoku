@@ -23,7 +23,7 @@ const ErrorFallback = () => {
   )
 }
 
-export const App: FC = () => {
+const App: FC = () => {
   return (
     <Suspense
       fallback={
@@ -38,3 +38,5 @@ export const App: FC = () => {
     </Suspense>
   )
 }
+
+export { App }

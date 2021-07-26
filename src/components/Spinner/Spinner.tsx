@@ -20,7 +20,7 @@ export type SpinnerProps = {
   className?: string
 }
 
-export const Spinner: FC<SpinnerProps> = ({
+const Spinner: FC<SpinnerProps> = ({
   size = 'md',
   variant = 'primary',
   className = ''
@@ -52,3 +52,5 @@ export const Spinner: FC<SpinnerProps> = ({
     </>
   )
 }
+
+export { Spinner }

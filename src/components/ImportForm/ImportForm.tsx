@@ -21,7 +21,7 @@ export interface ImportFormProps {
   onCancel: () => void
 }
 
-export const ImportForm: FC<ImportFormProps> = ({ visability, onSubmit, onCancel }) => {
+const ImportForm: FC<ImportFormProps> = ({ visability, onSubmit, onCancel }) => {
   const [boardSize, setBoardSize] = useState<BoardSize>('9')
   const [inputMode, setInputMode] = useState<BoardImportMode>('code')
   const [inputCode, setInputCode] = useState<BoardImportCode>('')
@@ -139,3 +139,5 @@ export const ImportForm: FC<ImportFormProps> = ({ visability, onSubmit, onCancel
     </form>
   )
 }
+
+export { ImportForm }
