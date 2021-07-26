@@ -11,7 +11,6 @@
     "eslint:fix": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix",
     "prettier:check": "prettier \"**/*.{js,jsx,ts,tsx,json,md}\" --list-different",
     "prettier:fix": "prettier \"**/*.{js,jsx,ts,tsx,json,md}\" --write",
-    "create-env": "cp .env.example .env",
     "prepare": "./scripts/prepare.sh"
   },
   "dependencies": {
