@@ -15,7 +15,7 @@ import {
 import '../../styles/Form.css'
 import { RadioFieldset } from '../RadioFieldset'
 
-export interface ImportFormProps {
+export type ImportFormProps = {
   visability: boolean
   onSubmit: (board: BoardModel, boardSize: BoardSize) => void
   onCancel: () => void

@@ -4,7 +4,7 @@ import { BoardModel, BoardSize } from '@/modules/sudoku'
 
 import { Cell } from '../Cell'
 
-export interface BoardProps {
+export type BoardProps = {
   board: BoardModel
   boardSize: BoardSize
 }

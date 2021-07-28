@@ -5,7 +5,7 @@ import { BoardDifficulty, BoardSize } from '@/modules/sudoku'
 import '../../styles/Form.css'
 import { RadioFieldset } from '../RadioFieldset'
 
-export interface GenerateFormProps {
+export type GenerateFormProps = {
   visability: boolean
   onSubmit: (boardSize: BoardSize, difficulty: BoardDifficulty) => void
   onCancel: () => void

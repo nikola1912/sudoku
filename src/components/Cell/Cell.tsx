@@ -4,7 +4,7 @@ import { cnb } from 'cnbuilder'
 
 import { BoardSize, CellModel } from '@/modules/sudoku'
 
-export interface CellProps {
+export type CellProps = {
   boardSize: BoardSize
   value: CellModel
 }

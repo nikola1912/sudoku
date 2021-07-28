@@ -1,6 +1,6 @@
 import { ChangeEvent, FC } from 'react'
 
-export interface RadioFieldsetProps {
+export type RadioFieldsetProps = {
   name: string
   questionMark?: boolean
   title: string

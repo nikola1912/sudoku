@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-export interface ExportFormProps {
+export type ExportFormProps = {
   visability: boolean
   onCancel: () => void
 }

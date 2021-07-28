@@ -2,9 +2,7 @@ import { ButtonHTMLAttributes, FC } from 'react'
 
 import { cnb } from 'cnbuilder'
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: string
-}
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 
 const Button: FC<ButtonProps> = ({ children, className = '', ...restProps }) => {
   return (
