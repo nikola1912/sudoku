@@ -34,12 +34,12 @@
 
 .board-cell {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 100%;
   font-weight: 600;
-  border-bottom: 1px solid var(--board-color);
   border-right: 1px solid var(--board-color);
+  border-bottom: 1px solid var(--board-color);
 }
 
 .board-cell-size9 {
@@ -83,15 +83,15 @@
 }
 
 .button {
-  font-family: inherit;
   width: 72px;
   height: 30px;
   margin: 0 15px;
-  outline: 0;
+  font-family: inherit;
   cursor: pointer;
-  border-radius: 3px;
-  border: 1px solid rgb(221, 221, 221);
   background-color: var(--button-color);
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 3px;
+  outline: 0;
 }
 
 .button:hover {
@@ -105,10 +105,10 @@
 }
 
 .hidden {
-  opacity: 0;
   width: 0;
   height: 0;
   overflow: hidden;
+  opacity: 0;
 }
 
 .buttons-container {

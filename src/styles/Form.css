@@ -1,9 +1,9 @@
 .error-message {
-  color: red;
   font-size: 0.8em;
+  color: red;
 }
 
-.error-message:empty:before {
+.error-message:empty::before {
   content: '\200b';
 }
 
@@ -15,16 +15,16 @@
 
 .form .questionMark {
   display: flex;
-  justify-content: center;
   align-items: flex-end;
-  cursor: pointer;
-  font-size: 0.8em;
+  justify-content: center;
   width: 15px;
   height: 15px;
   margin-right: 2px;
-  border-radius: 100%;
+  font-size: 0.8em;
   color: rgb(94, 94, 94);
+  cursor: pointer;
   background-color: rgb(231, 231, 231);
+  border-radius: 100%;
 }
 
 .radio-container {
@@ -34,13 +34,33 @@
 }
 
 .radio-container fieldset {
-  border: 0;
   padding-bottom: 0;
+  border: 0;
 }
 
 .radio-container legend {
   display: flex;
   align-items: center;
+  font-size: 0.9em;
+}
+
+.radio-container label {
+  display: inline-block;
+  width: 55px;
+  padding: 3px;
+  margin: 0 5px;
+  font-size: 0.85em;
+  cursor: pointer;
+  background-color: var(--button-color);
+  border: 1px solid var(--button-border);
+  border-radius: 3px;
+}
+
+.input-code-container label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
   font-size: 0.9em;
 }
 
@@ -59,49 +79,29 @@
 }
 
 .radio-container input[type='radio']:checked + label {
-  border: 1px solid var(--button-border-selected);
   background-color: var(--button-selected);
-}
-
-.radio-container label {
-  display: inline-block;
-  cursor: pointer;
-  width: 55px;
-  margin: 0 5px;
-  padding: 3px;
-  font-size: 0.85em;
-  border-radius: 3px;
-  border: 1px solid var(--button-border);
-  background-color: var(--button-color);
+  border: 1px solid var(--button-border-selected);
 }
 
 .input-code-container {
   margin-bottom: 7px;
 }
 
-.input-code-container label {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.9em;
-  margin-bottom: 4px;
-}
-
 .input-code-container input {
   display: block;
-  margin: 0 auto;
-  padding: 3px;
   width: 390px;
-  outline: 0;
+  padding: 3px;
+  margin: 0 auto;
+  font-size: 0.7em;
   color: var(--code-color);
   background-color: rgb(242, 246, 251);
-  font-size: 0.7em;
-  border-radius: 3px;
   border: 1px solid var(--button-border);
+  border-radius: 3px;
+  outline: 0;
 }
 
 .input-code-container + .button {
-  margin: 0px 7px;
+  margin: 0 7px;
 }
 
 .image-upload-container {
@@ -112,10 +112,10 @@
 
 .image-upload-label {
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 0.9em;
+  justify-content: center;
   margin-bottom: 4px;
+  font-size: 0.9em;
   cursor: default;
 }
 
@@ -123,14 +123,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
-  padding: 4.2px;
   width: 120px;
+  padding: 4.2px;
+  margin: 0 auto;
+  font-size: 0.7em;
   color: var(--code-color);
   background-color: rgb(242, 246, 251);
-  font-size: 0.7em;
-  border-radius: 3px;
   border: 1px solid var(--button-border);
+  border-radius: 3px;
 }
 
 .image-upload-button * {
@@ -143,5 +143,5 @@
 }
 
 .image-upload-container + .button {
-  margin: 0px 7px;
+  margin: 0 7px;
 }

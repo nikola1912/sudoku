@@ -13,7 +13,7 @@ const App: FC = () => {
   return (
     <Suspense
       fallback={
-        <div className="h-screen w-screen flex items-center justify-center">
+        <div className="flex items-center justify-center w-screen h-screen">
           <Spinner size="xl" />
         </div>
       }

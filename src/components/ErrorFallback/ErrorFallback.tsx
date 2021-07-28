@@ -3,7 +3,7 @@ import { Button } from '@/components/Button'
 const ErrorFallback = () => {
   return (
     <div
-      className="text-red-500 w-screen h-screen flex flex-col justify-center items-center"
+      className="flex flex-col items-center justify-center w-screen h-screen text-red-500"
       role="alert"
     >
       <h2 className="text-lg font-semibold">Ooops, something went wrong :( </h2>

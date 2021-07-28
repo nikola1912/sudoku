@@ -2,8 +2,9 @@
   "recommendations": [
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "vscode-icons-team.vscode-icons",
+    "stylelint.vscode-stylelint",
     "csstools.postcss",
-    "bradlc.vscode-tailwindcss"
+    "bradlc.vscode-tailwindcss",
+    "vscode-icons-team.vscode-icons"
   ]
 }

@@ -9,8 +9,10 @@
     "eject": "react-scripts eject",
     "eslint:check": "eslint \"**/*.{js,jsx,ts,tsx}\"",
     "eslint:fix": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix",
-    "prettier:check": "prettier \"**/*.{js,jsx,ts,tsx,json,md}\" --list-different",
-    "prettier:fix": "prettier \"**/*.{js,jsx,ts,tsx,json,md}\" --write",
+    "prettier:check": "prettier \"**/*.{js,jsx,ts,tsx,css,json,md}\" --list-different",
+    "prettier:fix": "prettier \"**/*.{js,jsx,ts,tsx,css,json,md}\" --write",
+    "stylelint:check": "stylelint \"**/*.css\"",
+    "stylelint:fix": "stylelint \"**/*.css\" --fix",
     "prepare": "./scripts/prepare.sh"
   },
   "dependencies": {
@@ -54,6 +56,11 @@
     "msw": "^0.33.0",
     "postcss": "^7.0.36",
     "prettier": "^2.3.2",
+    "prettier-plugin-tailwind": "^2.2.12",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recess-order": "^2.4.0",
+    "stylelint-config-standard": "^22.0.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.6"
   },
   "msw": {
