@@ -1,5 +1,5 @@
 /**
- * @type {import("eslint").Linter.Config}
+ * @type {import("@types/eslint").Linter.Config}
  */
 module.exports = {
   parser: '@typescript-eslint/parser',

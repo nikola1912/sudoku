@@ -1,5 +1,5 @@
 /**
- * @type {import("prettier").Options}
+ * @type {import("@types/prettier").Options}
  */
 module.exports = {
   semi: false,
