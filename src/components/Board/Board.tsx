@@ -1,8 +1,10 @@
 import { FC } from 'react'
 
+import { cnb } from 'cnbuilder'
+
 import { BoardModel, BoardSize } from '@/modules/sudoku'
 
-import { Cell } from '../Cell'
+import styles from './styles.module.css'
 
 export type BoardProps = {
   board: BoardModel
@@ -11,15 +13,16 @@ export type BoardProps = {
 
 const Board: FC<BoardProps> = ({ board, boardSize }) => {
   return (
-    <div className="board">
+    <div className={styles.board}>
       {board.map((row, rowIndex) => (
-        <div key={rowIndex} className="board-row">
+        <div key={rowIndex} className={styles.boardRow}>
           {row.map((cellValue, columnIndex) => (
-            <Cell
+            <div
               key={rowIndex * Number(boardSize) + columnIndex}
-              value={cellValue}
-              boardSize={boardSize}
-            />
+              className={cnb(styles.cell, styles[`cellSize${boardSize}`])}
+            >
+              {cellValue}
+            </div>
           ))}
         </div>
       ))}
