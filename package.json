@@ -9,7 +9,7 @@
     "eject": "react-scripts eject",
     "eslint:check": "eslint \"**/*.{js,jsx,ts,tsx}\"",
     "eslint:fix": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix",
-    "prettier:check": "prettier \"**/*.{js,jsx,ts,tsx,css,json,md}\" --list-different",
+    "prettier:check": "prettier \"**/*.{js,jsx,ts,tsx,css,json,md}\" --check",
     "prettier:fix": "prettier \"**/*.{js,jsx,ts,tsx,css,json,md}\" --write",
     "stylelint:check": "stylelint \"**/*.css\"",
     "stylelint:fix": "stylelint \"**/*.css\" --fix",
