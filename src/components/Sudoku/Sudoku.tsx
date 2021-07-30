@@ -8,6 +8,7 @@ import { Button } from '../Button'
 import { ExportForm } from '../ExportForm'
 import { GenerateForm } from '../GenerateForm'
 import { ImportForm } from '../ImportForm'
+import styles from './styles.module.css'
 
 /* const generateGrid = size => {
   const grid = []
@@ -37,7 +38,7 @@ const Sudoku: FC = () => {
     [' ', '6', ' ', ' ', ' ', ' ', ' ', '4', ' ']
   ])
   // const [board, setBoard] = useState(generateGrid(9))
-  const [buttonsVisability, setButtonsVisability] = useState(true)
+  const [buttonVisability, setButtonVisability] = useState(true)
   const [importVisability, setImportVisability] = useState(false)
   const [generateVisability, setGenerateVisability] = useState(false)
   const [exportVisability, setExportVisability] = useState(false)
@@ -55,21 +56,21 @@ const Sudoku: FC = () => {
     setImportVisability(false)
     setGenerateVisability(false)
     setExportVisability(false)
-    setButtonsVisability(true)
+    setButtonVisability(true)
   }
 
   const displayImportForm = () => {
-    setButtonsVisability(false)
+    setButtonVisability(false)
     setImportVisability(true)
   }
 
   const displayGenerateForm = () => {
-    setButtonsVisability(false)
+    setButtonVisability(false)
     setGenerateVisability(true)
   }
 
   const displayExportForm = () => {
-    setButtonsVisability(false)
+    setButtonVisability(false)
     setExportVisability(true)
   }
 
@@ -82,34 +83,28 @@ const Sudoku: FC = () => {
   }
 
   return (
-    <div className="game">
-      <div className="header-container">
-        <div className="buttons-container">
-          <Button onClick={handleSolve}>Solve</Button>
-          <Button onClick={handleRestart}>Restart</Button>
-        </div>
+    <div className={styles.sudoku}>
+      <div className={styles.buttonContainer}>
+        <Button onClick={handleSolve}>Solve</Button>
+        <Button onClick={handleRestart}>Restart</Button>
       </div>
-      <div className="board-container">
-        <Board board={board} boardSize={boardSize} />
+      <Board board={board} boardSize={boardSize} />
+      <div className={buttonVisability ? styles.buttonContainer : 'hidden'}>
+        <Button onClick={displayImportForm}>Import</Button>
+        <Button onClick={displayGenerateForm}>Generate</Button>
+        <Button onClick={displayExportForm}>Export</Button>
       </div>
-      <div className="footer-container">
-        <div className={buttonsVisability ? 'buttons-container' : 'hidden'}>
-          <Button onClick={displayImportForm}>Import</Button>
-          <Button onClick={displayGenerateForm}>Generate</Button>
-          <Button onClick={displayExportForm}>Export</Button>
-        </div>
-        <ImportForm
-          visability={importVisability}
-          onSubmit={handleImportSubmit}
-          onCancel={handleCancel}
-        />
-        <GenerateForm
-          visability={generateVisability}
-          onSubmit={handleGenerateSubmit}
-          onCancel={handleCancel}
-        />
-        <ExportForm visability={exportVisability} onCancel={handleCancel} />
-      </div>
+      <ImportForm
+        visability={importVisability}
+        onSubmit={handleImportSubmit}
+        onCancel={handleCancel}
+      />
+      <GenerateForm
+        visability={generateVisability}
+        onSubmit={handleGenerateSubmit}
+        onCancel={handleCancel}
+      />
+      <ExportForm visability={exportVisability} onCancel={handleCancel} />
     </div>
   )
 }

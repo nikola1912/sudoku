@@ -9,16 +9,6 @@
   --button-border-selected: rgb(176, 176, 176);
 }
 
-.game {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.game * {
-  color: var(--text-color);
-}
-
 .board {
   display: flex;
   flex-direction: column;
@@ -102,20 +92,4 @@
   position: relative;
   top: 0.5px;
   background-color: var(--button-clicked);
-}
-
-.hidden {
-  width: 0;
-  height: 0;
-  overflow: hidden;
-  opacity: 0;
-}
-
-.buttons-container {
-  display: flex;
-  justify-content: space-evenly;
-  height: auto;
-  margin: 15px 0;
-  opacity: 1;
-  transition: opacity 0.35s ease-out;
 }
