@@ -19,7 +19,10 @@ const Board: FC<BoardProps> = ({ board, boardSize }) => {
           {row.map((cellValue, columnIndex) => (
             <div
               key={rowIndex * Number(boardSize) + columnIndex}
-              className={cnb(styles.cell, styles[`cellSize${boardSize}`])}
+              className={cnb(styles.cell, {
+                [styles.cellSize9]: boardSize === '9',
+                [styles.cellSize16]: boardSize === '16'
+              })}
             >
               {cellValue}
             </div>
