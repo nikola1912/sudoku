@@ -1,0 +1,16 @@
+.sudoku {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 16px;
+  margin-bottom: 16px;
+
+  &.hidden {
+    display: 'none';
+  }
+}

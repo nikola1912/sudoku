@@ -2,7 +2,7 @@ import { FC, Suspense } from 'react'
 
 import { ErrorBoundary } from 'react-error-boundary'
 
-import './App.css'
+import './App.scss'
 import { initMocks } from '@/api'
 import { ErrorFallback } from '@/components/ErrorFallback'
 import { Spinner } from '@/components/Spinner'

@@ -1,0 +1,4 @@
+@use 'variables';
+@forward 'include-media' with (
+  $breakpoints: variables.$breakpoints
+);

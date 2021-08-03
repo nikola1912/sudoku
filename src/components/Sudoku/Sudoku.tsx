@@ -1,5 +1,7 @@
 import { FC, useState } from 'react'
 
+import { cnb } from 'cnbuilder'
+
 import { BoardDifficulty, BoardModel, BoardSize, solveSudoku } from '@/modules/sudoku'
 
 import '../../styles/Sudoku.css'
@@ -8,7 +10,7 @@ import { Button } from '../Button'
 import { ExportForm } from '../ExportForm'
 import { GenerateForm } from '../GenerateForm'
 import { ImportForm } from '../ImportForm'
-import styles from './styles.module.css'
+import styles from './styles.module.scss'
 
 /* const generateGrid = size => {
   const grid = []
@@ -89,7 +91,7 @@ const Sudoku: FC = () => {
         <Button onClick={handleRestart}>Restart</Button>
       </div>
       <Board board={board} boardSize={boardSize} />
-      <div className={buttonVisability ? styles.buttonContainer : 'hidden'}>
+      <div className={cnb(styles.buttonContainer, { hidden: buttonVisability })}>
         <Button onClick={displayImportForm}>Import</Button>
         <Button onClick={displayGenerateForm}>Generate</Button>
         <Button onClick={displayExportForm}>Export</Button>

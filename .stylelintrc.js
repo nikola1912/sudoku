@@ -5,14 +5,11 @@ module.exports = {
   extends: [
     'stylelint-config-standard',
     'stylelint-config-prettier',
-    'stylelint-config-recess-order'
+    'stylelint-config-recess-order',
+    'stylelint-config-sass-guidelines'
   ],
   rules: {
-    'at-rule-no-unknown': [
-      true,
-      {
-        ignoreAtRules: ['tailwind', 'apply', 'layer', 'variants', 'responsive', 'screen']
-      }
-    ]
+    'order/properties-alphabetical-order': null,
+    'selector-class-pattern': null
   }
 }

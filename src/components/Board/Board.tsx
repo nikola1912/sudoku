@@ -4,7 +4,7 @@ import { cnb } from 'cnbuilder'
 
 import { BoardModel, BoardSize } from '@/modules/sudoku'
 
-import styles from './styles.module.css'
+import styles from './styles.module.scss'
 
 export type BoardProps = {
   board: BoardModel

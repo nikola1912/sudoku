@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "TAILWIND_MODE=watch craco start",
+    "start": "craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
@@ -37,10 +37,8 @@
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
     "@types/stylelint": "^13.13.1",
-    "@types/tailwindcss": "^2.2.1",
     "@typescript-eslint/eslint-plugin": "^4.28.3",
     "@typescript-eslint/parser": "^4.28.3",
-    "autoprefixer": "^9.8.6",
     "browserslist": "^4.16.6",
     "eslint": "^7.31.0",
     "eslint-config-prettier": "^8.3.0",
@@ -54,15 +52,16 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-testing-library": "^3.10.2",
     "husky": "^7.0.0",
+    "include-media": "^1.4.10",
+    "modern-normalize": "^1.1.0",
     "msw": "^0.33.0",
-    "postcss": "^7.0.36",
     "prettier": "^2.3.2",
-    "prettier-plugin-tailwind": "^2.2.12",
+    "sass": "^1.37.2",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-recess-order": "^2.4.0",
-    "stylelint-config-standard": "^22.0.0",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.6"
+    "stylelint-config-sass-guidelines": "^8.0.0",
+    "stylelint-config-standard": "^22.0.0"
   },
   "msw": {
     "workerDirectory": "public"

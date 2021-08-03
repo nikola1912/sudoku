@@ -1,0 +1,12 @@
+@use 'modern-normalize';
+@use './styles/typography';
+@use './styles/breakpoints';
+
+body {
+  @include typography.body;
+}
+
+/* TODO: Remove */
+.hidden {
+  display: none;
+}

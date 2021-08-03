@@ -3,8 +3,6 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "stylelint.vscode-stylelint",
-    "csstools.postcss",
-    "bradlc.vscode-tailwindcss",
     "vscode-icons-team.vscode-icons"
   ]
 }

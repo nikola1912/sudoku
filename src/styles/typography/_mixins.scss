@@ -1,0 +1,27 @@
+@use 'variables';
+
+@mixin body {
+  font-family: variables.$font-family-base;
+  font-size: variables.$font-size-base;
+  font-weight: variables.$font-weight-normal;
+  color: variables.$text-color-primary;
+}
+
+@mixin button($disabled: false) {
+  font-family: variables.$font-family-base;
+  font-size: variables.$font-size-sm;
+  font-weight: variables.$font-weight-medium;
+
+  @if $disabled {
+    color: variables.$text-color-disabled;
+  } @else {
+    color: variables.$text-color-primary;
+  }
+}
+
+@mixin caption {
+  font-family: variables.$font-family-base;
+  font-size: variables.$font-size-xs;
+  font-weight: variables.$font-weight-normal;
+  color: variables.$text-color-primary;
+}
