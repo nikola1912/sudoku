@@ -4,13 +4,13 @@ import { cnb } from 'cnbuilder'
 
 import { BoardDifficulty, BoardModel, BoardSize, solveSudoku } from '@/modules/sudoku'
 
-import '../../styles/Sudoku.css'
 import { Board } from '../Board'
 import { Button } from '../Button'
 import { ExportForm } from '../ExportForm'
 import { GenerateForm } from '../GenerateForm'
 import { ImportForm } from '../ImportForm'
 import styles from './styles.module.scss'
+import '../../styles/Sudoku.css'
 
 /* const generateGrid = size => {
   const grid = []

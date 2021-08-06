@@ -64,12 +64,9 @@ module.exports = {
             group: 'internal'
           }
         ],
-        pathGroupsExcludedImportTypes: ['builtin', 'react'],
-        'newlines-between': 'always',
-        alphabetize: {
-          order: 'asc',
-          caseInsensitive: true
-        }
+        pathGroupsExcludedImportTypes: ['react'],
+        warnOnUnassignedImports: true,
+        'newlines-between': 'always'
       }
     ],
     'no-restricted-imports': ['error', { patterns: ['@/*/*/*', '@/api/*'] }],

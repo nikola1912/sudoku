@@ -2,8 +2,8 @@ import { ChangeEvent, FC, FormEvent, useState } from 'react'
 
 import { BoardDifficulty, BoardSize } from '@/modules/sudoku'
 
-import '../../styles/Form.css'
 import { RadioFieldset } from '../RadioFieldset'
+import '../../styles/Form.css'
 
 export type GenerateFormProps = {
   visability: boolean

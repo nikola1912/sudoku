@@ -8,6 +8,8 @@ import { ErrorFallback } from '@/components/ErrorFallback'
 import { Spinner } from '@/components/Spinner'
 import { Sudoku } from '@/components/Sudoku'
 
+import './App.scss'
+
 initMocks()
 
 const App: FC = () => {
