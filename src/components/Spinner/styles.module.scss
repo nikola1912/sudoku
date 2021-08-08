@@ -1,0 +1,64 @@
+@use '@/styles/colors';
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  display: flex;
+
+  &.primary {
+    color: colors.$primary;
+  }
+
+  &.light {
+    color: colors.$gray;
+  }
+
+  &.sm::after {
+    width: 16px;
+    height: 16px;
+    border-width: 2.28571px;
+  }
+
+  &.md::after {
+    width: 32px;
+    height: 32px;
+    border-width: 4.57143px;
+  }
+
+  &.lg::after {
+    width: 64px;
+    height: 64px;
+    border-width: 9.14286px;
+  }
+
+  &.xl::after {
+    width: 128px;
+    height: 128px;
+    border-width: 18.2857px;
+  }
+
+  &::after {
+    content: '';
+    border-color: colors.$gray-lightest;
+    border-style: solid;
+    border-top-color: colors.$primary;
+    border-radius: 50%;
+    animation: spin 1s ease infinite;
+  }
+}
+
+.fullPageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}

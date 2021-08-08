@@ -9,6 +9,7 @@ module.exports = {
     'stylelint-config-sass-guidelines'
   ],
   rules: {
+    'max-nesting-depth': null,
     'order/properties-alphabetical-order': null,
     'selector-class-pattern': null
   }
