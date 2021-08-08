@@ -1,6 +1,6 @@
-@use 'modern-normalize';
-@use './styles/typography';
-@use './styles/breakpoints';
+@use './styles/vendors/modern-normalize';
+@use './styles/theme/typography';
+@use './styles/theme/breakpoints';
 
 body {
   @include typography.body;
