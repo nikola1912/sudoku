@@ -1,0 +1,17 @@
+@use '@/styles/colors';
+@use '@/styles/typography';
+
+.errorFallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.errorMessage {
+  font-size: typography.$font-size-lg;
+  font-weight: typography.$font-weight-medium;
+  color: typography.$text-color-primary;
+}
