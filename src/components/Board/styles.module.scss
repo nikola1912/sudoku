@@ -1,9 +1,14 @@
+@use '@/styles/colors';
+@use '@/styles/typography';
+
+$_board-color: colors.$gray-darkest;
+
 .board {
   display: flex;
   flex-direction: column;
   width: 400px;
   height: 400px;
-  border: 2px solid rgb(17, 24, 39);
+  border: 2px solid $_board-color;
 }
 
 .cell {
@@ -11,20 +16,20 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  font-weight: 600;
+  font-weight: typography.$font-weight-bold;
   // TODO: @body mixin sets border color for some reason
-  border-color: rgb(17, 24, 39) !important;
+  border-color: $_board-color !important;
   border-style: solid;
   border-width: 0 1px 1px 0;
 }
 
 .cellSize9 {
-  font-size: 18px;
+  font-size: typography.$font-size-md;
 }
 
 .cellSize16 {
   /* TODO: Test this */
-  font-size: 14px;
+  font-size: typography.$font-size-sm;
 }
 
 .cellSize9:nth-child(3n),
@@ -34,7 +39,7 @@
 
 .cellSize9:nth-child(n + 2):nth-child(3n + 1),
 .cellSize16:nth-child(n + 2):nth-child(4n + 1) {
-  border-color: rgb(17, 24, 39);
+  border-color: $_board-color;
   border-left: 2px solid;
 }
 
@@ -49,7 +54,7 @@
 
   &:nth-child(n + 2):nth-child(3n + 1) .cellSize9,
   &:nth-child(n + 2):nth-child(4n + 1) .cellSize16 {
-    border-color: rgb(17, 24, 39);
+    border-color: $_board-color;
     border-top: 2px solid;
   }
 }

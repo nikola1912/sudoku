@@ -1,7 +1,7 @@
 :root {
   --text-color: rgb(65, 65, 65);
   --code-color: rgb(103, 103, 103);
-  --board-color: rgb(65, 65, 65); /* gray[900] */
+  --board-color: rgb(65, 65, 65); /* colors.$gray-darkest */
   --button-color: rgb(241, 241, 241);
   --button-hover: rgb(245, 245, 245);
   --button-clicked: rgb(238, 238, 238);
