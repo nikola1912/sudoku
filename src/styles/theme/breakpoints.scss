@@ -5,3 +5,7 @@ $breakpoints: (
   lg: 1280px,
   xl: 1920px
 );
+
+@forward '../vendors/include-media' with (
+  $breakpoints: $breakpoints
+);

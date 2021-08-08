@@ -22,3 +22,30 @@ $font-weight-bold: 600 !default;
 $text-color-primary: #000000de !default;
 $text-color-secondary: #0000008a !default;
 $text-color-disabled: #00000061 !default;
+
+// Text variants
+@mixin body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  color: $text-color-primary;
+}
+
+@mixin button($disabled: false) {
+  font-family: $font-family-base;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+
+  @if $disabled {
+    color: $text-color-disabled;
+  } @else {
+    color: $text-color-primary;
+  }
+}
+
+@mixin caption {
+  font-family: $font-family-base;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-normal;
+  color: $text-color-primary;
+}
