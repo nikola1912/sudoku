@@ -91,7 +91,7 @@ const Sudoku: FC = () => {
         <Button onClick={handleRestart}>Restart</Button>
       </div>
       <Board board={board} boardSize={boardSize} />
-      <div className={cnb(styles.buttonContainer, { hidden: buttonVisability })}>
+      <div className={cnb(styles.buttonContainer, { hidden: !buttonVisability })}>
         <Button onClick={displayImportForm}>Import</Button>
         <Button onClick={displayGenerateForm}>Generate</Button>
         <Button onClick={displayExportForm}>Export</Button>
