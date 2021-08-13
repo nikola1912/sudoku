@@ -61,7 +61,7 @@ module.exports = {
             position: 'before'
           },
           {
-            pattern: '@/**',
+            pattern: '~/**',
             group: 'internal'
           }
           // TODO: Improve styling import order
@@ -78,7 +78,7 @@ module.exports = {
         }
       }
     ],
-    'no-restricted-imports': ['error', { patterns: ['@/*/*/*', '@/api/*'] }],
+    'no-restricted-imports': ['error', { patterns: ['~/*/*/*', '~/api/*'] }],
     'space-before-blocks': 'error',
     'spaced-comment': ['error', 'always'],
     'object-shorthand': [

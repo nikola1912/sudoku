@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { cnb } from 'cnbuilder'
 
-import { BoardModel, BoardSize } from '@/modules/sudoku'
+import { BoardModel, BoardSize } from '~/modules/sudoku'
 
 import styles from './styles.module.scss'
 

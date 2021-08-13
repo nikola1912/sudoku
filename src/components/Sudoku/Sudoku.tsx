@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 
 import { cnb } from 'cnbuilder'
 
-import { BoardDifficulty, BoardModel, BoardSize, solveSudoku } from '@/modules/sudoku'
+import { BoardDifficulty, BoardModel, BoardSize, solveSudoku } from '~/modules/sudoku'
 
 import { Board } from '../Board'
 import { Button } from '../Button'

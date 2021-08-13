@@ -2,7 +2,7 @@ import { ChangeEvent, FC, FormEvent, useState } from 'react'
 
 import { FiUpload } from 'react-icons/fi'
 
-import { scanSudoku } from '@/api'
+import { scanSudoku } from '~/api'
 import {
   BoardImportCode,
   BoardImportMode,
@@ -10,7 +10,7 @@ import {
   BoardSize,
   formatSudoku,
   validateSudoku
-} from '@/modules/sudoku'
+} from '~/modules/sudoku'
 
 import { RadioFieldset } from '../RadioFieldset'
 

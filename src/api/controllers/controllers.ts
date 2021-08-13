@@ -1,4 +1,4 @@
-import { BoardModel } from '@/modules/sudoku'
+import { BoardModel } from '~/modules/sudoku'
 
 import { client } from '../client'
 

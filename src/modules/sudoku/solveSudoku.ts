@@ -1,4 +1,4 @@
-import { arrayToMatrix } from '@/utils/helpers'
+import { arrayToMatrix } from '~/utils/helpers'
 
 import { EMPTY_CELL } from './constants'
 import { BoardModel, BoardModelCompound, BoardSize } from './typings'

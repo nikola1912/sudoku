@@ -1,6 +1,6 @@
 import { rest } from 'msw'
 
-import { API_URL } from '@/configs/environment'
+import { API_URL } from '~/configs/environment'
 
 const handlers = [
   rest.post(`${API_URL}/scanner`, (_, res, ctx) => {

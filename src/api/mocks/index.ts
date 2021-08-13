@@ -1,4 +1,4 @@
-import { ENVIRONMENT, MOCK_API } from '@/configs/environment'
+import { ENVIRONMENT, MOCK_API } from '~/configs/environment'
 
 const initMocks = () => {
   if (MOCK_API) {
