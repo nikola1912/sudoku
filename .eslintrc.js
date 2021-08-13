@@ -49,7 +49,8 @@ module.exports = {
           'builtin',
           'external',
           'internal',
-          ['index', 'sibling', 'parent'],
+          'parent',
+          ['index', 'sibling'],
           'object',
           'unknown'
         ],
@@ -63,10 +64,18 @@ module.exports = {
             pattern: '@/**',
             group: 'internal'
           }
+          // TODO: Improve styling import order
+          // {
+          //   pattern: '{.,..}/**/*.+(css|scss)',
+          //   group: 'sibling'
+          // }
         ],
         pathGroupsExcludedImportTypes: ['react'],
-        warnOnUnassignedImports: true,
-        'newlines-between': 'always'
+        'newlines-between': 'always',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true
+        }
       }
     ],
     'no-restricted-imports': ['error', { patterns: ['@/*/*/*', '@/api/*'] }],

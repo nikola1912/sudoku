@@ -3,6 +3,7 @@ import { ChangeEvent, FC, FormEvent, useState } from 'react'
 import { BoardDifficulty, BoardSize } from '@/modules/sudoku'
 
 import { RadioFieldset } from '../RadioFieldset'
+
 import '../../styles/Form.css'
 
 export type GenerateFormProps = {

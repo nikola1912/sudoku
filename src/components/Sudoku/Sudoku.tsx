@@ -9,7 +9,9 @@ import { Button } from '../Button'
 import { ExportForm } from '../ExportForm'
 import { GenerateForm } from '../GenerateForm'
 import { ImportForm } from '../ImportForm'
+
 import styles from './styles.module.scss'
+
 import '../../styles/Sudoku.css'
 
 /* const generateGrid = size => {
