@@ -1,32 +1,13 @@
 :root {
-  --text-color: rgb(65, 65, 65);
   --code-color: rgb(103, 103, 103);
-  --board-color: rgb(65, 65, 65); /* colors.$gray-darkest */
+
+  /* colors.$gray-lightest; */
   --button-color: rgb(241, 241, 241);
+
+  /* color.scale($color: colors.$gray-lightest, $lightness: 50%); */
   --button-hover: rgb(245, 245, 245);
-  --button-clicked: rgb(238, 238, 238);
+
+  /* colors.$gray-lighter; */
   --button-border: rgb(221, 221, 221);
   --button-border-selected: rgb(176, 176, 176);
-}
-
-.button {
-  width: 72px;
-  height: 30px;
-  margin: 0 15px;
-  font-family: inherit;
-  cursor: pointer;
-  background-color: var(--button-color);
-  border: 1px solid rgb(221, 221, 221);
-  border-radius: 3px;
-  outline: 0;
-}
-
-.button:hover {
-  background-color: var(--button-hover);
-}
-
-.button:active {
-  position: relative;
-  top: 0.5px;
-  background-color: var(--button-clicked);
 }

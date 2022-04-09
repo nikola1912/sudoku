@@ -2,6 +2,8 @@ import { ButtonHTMLAttributes, FC } from 'react'
 
 import { cnb } from 'cnbuilder'
 
+import styles from './styles.module.scss'
+
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 
 // const style = {
@@ -21,9 +23,18 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 //   },
 // };
 
-const Button: FC<ButtonProps> = ({ children, className = '', ...restProps }) => {
+const Button: FC<ButtonProps> = ({
+  children,
+  className = '',
+  disabled = false,
+  ...restProps
+}) => {
   return (
-    <button className={cnb('button', className)} {...restProps}>
+    <button
+      disabled={disabled}
+      className={cnb(styles.button, { [styles.disabled]: disabled }, className)}
+      {...restProps}
+    >
       {children}
     </button>
   )

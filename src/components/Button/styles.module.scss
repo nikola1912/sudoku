@@ -1,0 +1,31 @@
+@use 'sass:color';
+@use '~/styles/theme/colors';
+@use '~/styles/theme/typography';
+
+.button {
+  @include typography.button($disabled: false);
+
+  width: 72px;
+  height: 30px;
+  margin: 0 15px;
+  cursor: pointer;
+  background-color: colors.$gray-lightest;
+  border: 1px solid colors.$gray-lighter;
+  border-radius: 3px;
+  outline: 0;
+
+  &:hover {
+    background-color: color.scale($color: colors.$gray-lightest, $lightness: 50%);
+  }
+
+  &:active {
+    background-color: color.scale($color: colors.$gray-lightest, $lightness: 80%);
+  }
+
+  &.disabled {
+    @include typography.button($disabled: true);
+
+    cursor: default;
+    background-color: colors.$gray-lightest;
+  }
+}
